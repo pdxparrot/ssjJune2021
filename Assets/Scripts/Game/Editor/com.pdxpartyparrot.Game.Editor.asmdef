@@ -1,0 +1,20 @@
+{
+    "name": "com.pdxpartyparrot.Game.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:10051649e6fa33340b1095a4d69174ae",
+        "GUID:b79220547a9db514581b9fc2b2341c69",
+        "GUID:82dfc764d9a91d244970d8d63f3b6388"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

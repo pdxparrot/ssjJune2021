@@ -1,0 +1,17 @@
+{
+    "name": "com.pdxpartyparrot.ssjjune2021",
+    "rootNamespace": "",
+    "references": [
+        "GUID:10051649e6fa33340b1095a4d69174ae",
+        "GUID:82dfc764d9a91d244970d8d63f3b6388"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

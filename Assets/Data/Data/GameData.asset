@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: GameData
   m_EditorClassIdentifier: 
   _worldLayer: World
-  _viewerPrefab: {fileID: 0}
+  _viewerPrefab: {fileID: 4670699324735205309, guid: 5131b660ac2129f47ab6488fa4604c47, type: 3}
   _viewportSize: 10
   _fov: 60
   _maxLocalPlayers: 1
   _gamepadsArePlayers: 1
   _floatingTextPrefab: {fileID: 1111323106642993084, guid: acbc5b477db4ed44082aa5b74a99ceab, type: 3}
   _floatingTextPoolSize: 10
-  _mainGameStatePrefab: {fileID: 0}
+  _mainGameStatePrefab: {fileID: 789884741986750922, guid: e76b1c9f1c9dbf842ba33fe338284675, type: 3}

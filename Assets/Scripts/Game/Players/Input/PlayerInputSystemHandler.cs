@@ -49,6 +49,8 @@ namespace pdxpartyparrot.Game.Players.Input
             if(null == _lookAction) {
                 Debug.LogWarning("Missing look action");
             }
+
+            // TODO: get a hook to the look InvertVector2 processor so we can modify it?
         }
 
         protected override void Update()

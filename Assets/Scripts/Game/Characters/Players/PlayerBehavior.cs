@@ -68,6 +68,11 @@ namespace pdxpartyparrot.Game.Characters.Players
 
                 if(PlayerBehaviorData.AllowLookVertical) {
                     float velocity = LookRotation.y * VerticalLookSpeed;
+
+                    // TODO: if we can ever control this from the InputAction processors
+                    // we can get rid of this math here
+                    velocity *= Player.PlayerInputHandler.InvertLookVertical ? 1.0f : -1.0f;
+
                     Vector3 rotation = LookTarget.transform.eulerAngles;
                     rotation.x += velocity * dt;
 

@@ -67,6 +67,15 @@ namespace pdxpartyparrot.Game.Players.Input
 
         protected bool EnableMouseLook { get; private set; } = !Application.isEditor;
 
+        [SerializeField]
+        private bool _invertLookVertical;
+
+        public bool InvertLookVertical
+        {
+            get => _invertLookVertical;
+            set => _invertLookVertical = value;
+        }
+
         public PlayerInputHelper InputHelper { get; private set; }
 
         private DebugMenuNode _debugMenuNode;
@@ -180,6 +189,8 @@ namespace pdxpartyparrot.Game.Players.Input
                 if(Application.isEditor) {
                     EnableMouseLook = GUILayout.Toggle(EnableMouseLook, "Enable Mouse Look");
                 }
+
+                InvertLookVertical = GUILayout.Toggle(InvertLookVertical, "Invert Look Vertical");
 
                 // TODO: we buffer way too much movement / look to render them here
 

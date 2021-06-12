@@ -5,7 +5,7 @@ using pdxpartyparrot.Game.Collectables;
 using pdxpartyparrot.Game.Data;
 using pdxpartyparrot.ssjjune2021.Data;
 
-namespace pdxpartyparrot.ssjjune2021.NPCs
+namespace pdxpartyparrot.ssjjune2021.Items
 {
     [RequireComponent(typeof(Collider))]
     public sealed class MemoryFragment : MonoBehaviour, ICollectable

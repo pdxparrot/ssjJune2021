@@ -4,6 +4,6 @@ namespace pdxpartyparrot.ssjjune2021.Level
     {
         // TODO: anything common to all of the levels goes here
 
-        int FragmentsCollected { get; }
+        int MemoryFragmentsCollected { get; }
     }
 }

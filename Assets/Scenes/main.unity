@@ -836,6 +836,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1583917619}
     - target: {fileID: 9034441829786416180, guid: 3ff8b32e10fcfe34083434e885396758, type: 3}
+      propertyPath: _playerManager
+      value: 
+      objectReference: {fileID: 8609457449376730814, guid: b4da3be84346c3e4b98a96fd9215707a, type: 3}
+    - target: {fileID: 9034441829786416180, guid: 3ff8b32e10fcfe34083434e885396758, type: 3}
       propertyPath: _uiManagerPrefab
       value: 
       objectReference: {fileID: 6221536103858815709, guid: 7d8bdcb734dd2bf4db09c095a14d721c, type: 3}

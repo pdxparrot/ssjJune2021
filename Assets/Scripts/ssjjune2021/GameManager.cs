@@ -4,12 +4,15 @@ using pdxpartyparrot.Core.Camera;
 using pdxpartyparrot.Game;
 using pdxpartyparrot.ssjjune2021.Camera;
 using pdxpartyparrot.ssjjune2021.Data;
+using pdxpartyparrot.ssjjune2021.Level;
 
 namespace pdxpartyparrot.ssjjune2021
 {
     public sealed class GameManager : GameManager<GameManager>
     {
         public GameData GameGameData => (GameData)GameData;
+
+        public IBaseLevel BaseLevel => (IBaseLevel)LevelHelper;
 
         public GameViewer Viewer { get; private set; }
 

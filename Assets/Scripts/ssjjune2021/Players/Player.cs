@@ -60,17 +60,6 @@ namespace pdxpartyparrot.ssjjune2021.Players
             return true;
         }
 
-        public override bool OnReSpawn(SpawnPoint spawnpoint)
-        {
-            if(!base.OnReSpawn(spawnpoint)) {
-                return false;
-            }
-
-            PlayerGameViewer.FollowTarget(gameObject);
-
-            return true;
-        }
-
         public override void OnDeSpawn()
         {
             PlayerGameViewer.FollowTarget(null);

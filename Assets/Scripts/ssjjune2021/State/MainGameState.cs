@@ -1,8 +1,7 @@
+using UnityEngine;
 
 using pdxpartyparrot.Core.Camera;
 using pdxpartyparrot.ssjjune2021.UI;
-
-using UnityEngine;
 
 namespace pdxpartyparrot.ssjjune2021.State
 {

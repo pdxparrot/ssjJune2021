@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 1165146076590566432}
   m_Layer: 10
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -303,7 +303,8 @@ MonoBehaviour:
   _idleEffect: {fileID: 0}
   _movingEffectTrigger: {fileID: 0}
   _moveDirection: {x: 0, y: 0, z: 0}
-  _lookRotation: {x: 0, y: 0, z: 0}
+  _lookDirection: {x: 0, y: 0, z: 0}
+  _lookRotation: {x: 0, y: 0, z: 0, w: 0}
   _lookTarget: {fileID: 172284198319928425}
 --- !u!114 &1331090144544693578
 MonoBehaviour:

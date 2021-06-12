@@ -11,6 +11,8 @@ namespace pdxpartyparrot.ssjjune2021.Data
     [Serializable]
     public sealed class GameData : Game.Data.GameData
     {
+        public GameViewer GameViewerPrefab => (GameViewer)ViewerPrefab;
+
         #region Project Game States
 
         [Header("Project Game States")]
@@ -21,7 +23,5 @@ namespace pdxpartyparrot.ssjjune2021.Data
         public LevelSelectState LevelSelectStatePrefab => _levelSelectStatePrefab;
 
         #endregion
-
-        public GameViewer GameViewerPrefab => (GameViewer)ViewerPrefab;
     }
 }

@@ -31,11 +31,26 @@ namespace pdxpartyparrot.ssjjune2021.Players
             }
 
             if(Core.Input.InputManager.Instance.EnableDebug) {
-                Debug.Log($"Move: {context.action.phase}");
+                Debug.Log($"Jump: {context.action.phase}");
             }
 
             if(context.performed) {
                 Player.PlayerBehavior.ActionPerformed(JumpBehaviorComponent.JumpAction.Default);
+            }
+        }
+
+        public void OnInteractAction(InputAction.CallbackContext context)
+        {
+            if(!IsInputAllowed(context)) {
+                return;
+            }
+
+            if(Core.Input.InputManager.Instance.EnableDebug) {
+                Debug.Log($"Interact: {context.action.phase}");
+            }
+
+            if(context.performed) {
+                Debug.Log("TODO: interact?");
             }
         }
 

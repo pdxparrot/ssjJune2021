@@ -26,9 +26,19 @@ namespace pdxpartyparrot.Game.Characters.Players
 
         [SerializeField]
         [ReadOnly]
-        private Vector3 _lookRotation;
+        private Vector3 _lookDirection;
 
-        public Vector3 LookRotation => _lookRotation;
+        public Vector3 LookDirection => _lookDirection;
+
+        [SerializeField]
+        [ReadOnly]
+        private Quaternion _lookRotation;
+
+        public Quaternion LookRotation
+        {
+            get => _lookRotation;
+            private set => _lookRotation = value;
+        }
 
         public virtual Transform LookTarget { get; } = null;
 
@@ -48,40 +58,43 @@ namespace pdxpartyparrot.Game.Characters.Players
             Vector3 moveDirection = Vector3.MoveTowards(MoveDirection, Player.PlayerInputHandler.LastMove, dt * Player.PlayerInputHandler.PlayerInputData.MovementLerpSpeed);
             SetMoveDirection(moveDirection);
 
-            // set look rotation from input
-            Vector3 lookRotation = Vector3.MoveTowards(LookRotation, Player.PlayerInputHandler.LastLook, dt * Player.PlayerInputHandler.PlayerInputData.LookLerpSpeed);
-            SetLookRotation(lookRotation);
+            // set look direction from input
+            Vector3 lookDirection = Vector3.MoveTowards(LookDirection, Player.PlayerInputHandler.LastLook, dt * Player.PlayerInputHandler.PlayerInputData.LookLerpSpeed);
+            SetLookDirection(lookDirection);
         }
 
         protected virtual void LateUpdate()
         {
             float dt = Time.deltaTime;
 
+            if(PlayerBehaviorData.AllowLookHorizontal) {
+                float velocity = LookDirection.x * HorizontalLookSpeed;
+                LookRotation *= Quaternion.AngleAxis(velocity * dt, Vector3.up);
+            }
+
+            if(PlayerBehaviorData.AllowLookVertical) {
+                float velocity = LookDirection.y * VerticalLookSpeed;
+
+                // TODO: if we can ever control this from the InputAction processors
+                // we can get rid of this math here
+                velocity *= Player.PlayerInputHandler.InvertLookVertical ? 1.0f : -1.0f;
+
+                LookRotation *= Quaternion.AngleAxis(velocity * dt, Vector3.right);
+            }
+
+            // clamp the look vertical rotation
+            Vector3 rotation = LookRotation.eulerAngles;
+            if(rotation.x > 180.0f) {
+                rotation.x = Mathf.Clamp(rotation.x, 360.0f - PlayerBehaviorData.MaxVerticalRotation, 360.0f);
+            } else {
+                rotation.x = Mathf.Clamp(rotation.x, 0.0f, PlayerBehaviorData.MaxVerticalRotation);
+            }
+            rotation.z = 0.0f;
+
+            LookRotation = Quaternion.Euler(rotation);
+
             if(null != LookTarget) {
-                if(PlayerBehaviorData.AllowLookHorizontal) {
-                    float velocity = LookRotation.x * HorizontalLookSpeed;
-                    LookTarget.transform.rotation *= Quaternion.AngleAxis(velocity * dt, Vector3.up);
-                }
-
-                if(PlayerBehaviorData.AllowLookVertical) {
-                    float velocity = LookRotation.y * VerticalLookSpeed;
-
-                    // TODO: if we can ever control this from the InputAction processors
-                    // we can get rid of this math here
-                    velocity *= Player.PlayerInputHandler.InvertLookVertical ? 1.0f : -1.0f;
-
-                    LookTarget.transform.rotation *= Quaternion.AngleAxis(velocity * dt, Vector3.right);
-                }
-
-                Vector3 rotation = LookTarget.transform.eulerAngles;
-                if(rotation.x > 180.0f) {
-                    rotation.x = Mathf.Clamp(rotation.x, 360.0f - PlayerBehaviorData.MaxVerticalRotation, 360.0f);
-                } else {
-                    rotation.x = Mathf.Clamp(rotation.x, 0.0f, PlayerBehaviorData.MaxVerticalRotation);
-                }
-                rotation.z = 0.0f;
-
-                LookTarget.transform.eulerAngles = rotation;
+                LookTarget.rotation = LookRotation;
             }
 
             Owner.IsMoving = !Mathf.Approximately(MoveDirection.sqrMagnitude, 0.0f);
@@ -97,7 +110,9 @@ namespace pdxpartyparrot.Game.Characters.Players
             base.Initialize(behaviorData);
 
             _moveDirection = Vector3.zero;
-            _lookRotation = Vector3.zero;
+
+            _lookDirection = Vector3.zero;
+            _lookRotation = Quaternion.identity;
         }
 
         public virtual void InitializeLocalPlayerBehavior()
@@ -109,9 +124,9 @@ namespace pdxpartyparrot.Game.Characters.Players
             _moveDirection = CanMove ? Vector3.ClampMagnitude(moveDirection, 1.0f) : Vector3.zero;
         }
 
-        public void SetLookRotation(Vector3 lookRotation)
+        public void SetLookDirection(Vector3 lookDirection)
         {
-            _lookRotation = lookRotation;
+            _lookDirection = lookDirection;
         }
 
         // TODO: not sure if the alignmovement with viewer code here works anymore
@@ -126,7 +141,7 @@ namespace pdxpartyparrot.Game.Characters.Players
             Vector3 forward = MoveDirection;
             if(PlayerBehaviorData.AlignMovementWithViewer && null != Player.Viewer) {
                 // align with the camera instead of the movement
-                forward = (Quaternion.AngleAxis(LookRotation.y, Vector3.up) * MoveDirection).normalized;
+                forward = (Quaternion.AngleAxis(LookRotation.eulerAngles.y, Vector3.up) * MoveDirection).normalized;
             }
 
             AlignToMovement(forward);
@@ -156,7 +171,7 @@ namespace pdxpartyparrot.Game.Characters.Players
             Quaternion rotation = Owner.Movement.Rotation;
             if(PlayerBehaviorData.AlignMovementWithViewer && null != Player.Viewer) {
                 // rotate with the camera instead of the movement
-                rotation = Quaternion.AngleAxis(LookRotation.y, Vector3.up);
+                rotation = Quaternion.AngleAxis(LookRotation.eulerAngles.y, Vector3.up);
             }
             velocity = rotation * velocity;
 

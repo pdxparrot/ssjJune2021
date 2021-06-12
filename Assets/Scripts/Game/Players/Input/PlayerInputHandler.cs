@@ -65,7 +65,8 @@ namespace pdxpartyparrot.Game.Players.Input
         [ReadOnly]
         private bool _inputEnabled;
 
-        protected bool EnableMouseLook { get; private set; } = !Application.isEditor;
+        // TODO: we need to modify the InputAction action for this
+        //protected bool EnableMouseLook { get; private set; } = !Application.isEditor;
 
         [SerializeField]
         private bool _invertLookVertical;
@@ -186,9 +187,9 @@ namespace pdxpartyparrot.Game.Players.Input
                     _mouseSensitivity = GUIUtils.FloatField(_mouseSensitivity);
                 GUILayout.EndHorizontal();*/
 
-                if(Application.isEditor) {
+                /*if(Application.isEditor) {
                     EnableMouseLook = GUILayout.Toggle(EnableMouseLook, "Enable Mouse Look");
-                }
+                }*/
 
                 InvertLookVertical = GUILayout.Toggle(InvertLookVertical, "Invert Look Vertical");
 

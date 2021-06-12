@@ -19,9 +19,11 @@ namespace pdxpartyparrot.Game.Data.Characters
         public bool AllowLookHorizontal => _allowLookHorizontal;
 
         [SerializeField]
-        private float _horizontalLookSpeed = 30.0f;
+        private float _horizontalLookSpeed = 75.0f;
 
         public float HorizontalLookSpeed => _horizontalLookSpeed;
+
+        [Space(10)]
 
         [SerializeField]
         private bool _allowLookVertical;
@@ -29,9 +31,14 @@ namespace pdxpartyparrot.Game.Data.Characters
         public bool AllowLookVertical => _allowLookVertical;
 
         [SerializeField]
-        private float _verticalLookSpeed = 30.0f;
+        private float _verticalLookSpeed = 75.0f;
 
         public float VerticalLookSpeed => _verticalLookSpeed;
+
+        [SerializeField]
+        private float _maxVerticalRotation = 45.0f;
+
+        public float MaxVerticalRotation => _maxVerticalRotation;
 
         #endregion
 

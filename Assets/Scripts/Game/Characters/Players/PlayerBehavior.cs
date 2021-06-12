@@ -60,10 +60,7 @@ namespace pdxpartyparrot.Game.Characters.Players
             if(null != LookTarget) {
                 if(PlayerBehaviorData.AllowLookHorizontal) {
                     float velocity = LookRotation.x * HorizontalLookSpeed;
-                    Vector3 rotation = LookTarget.transform.eulerAngles;
-                    rotation.y += velocity * dt;
-
-                    LookTarget.transform.eulerAngles = rotation;
+                    LookTarget.transform.rotation *= Quaternion.AngleAxis(velocity * dt, Vector3.up);
                 }
 
                 if(PlayerBehaviorData.AllowLookVertical) {
@@ -73,11 +70,18 @@ namespace pdxpartyparrot.Game.Characters.Players
                     // we can get rid of this math here
                     velocity *= Player.PlayerInputHandler.InvertLookVertical ? 1.0f : -1.0f;
 
-                    Vector3 rotation = LookTarget.transform.eulerAngles;
-                    rotation.x += velocity * dt;
-
-                    LookTarget.transform.eulerAngles = rotation;
+                    LookTarget.transform.rotation *= Quaternion.AngleAxis(velocity * dt, Vector3.right);
                 }
+
+                Vector3 rotation = LookTarget.transform.eulerAngles;
+                if(rotation.x > 180.0f) {
+                    rotation.x = Mathf.Clamp(rotation.x, 360.0f - PlayerBehaviorData.MaxVerticalRotation, 360.0f);
+                } else {
+                    rotation.x = Mathf.Clamp(rotation.x, 0.0f, PlayerBehaviorData.MaxVerticalRotation);
+                }
+                rotation.z = 0.0f;
+
+                LookTarget.transform.eulerAngles = rotation;
             }
 
             Owner.IsMoving = !Mathf.Approximately(MoveDirection.sqrMagnitude, 0.0f);

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4670699324735205307}
   - component: {fileID: 4670699324735205306}
   - component: {fileID: 4670699324735205309}
+  - component: {fileID: 1890355319263202008}
   m_Layer: 9
   m_Name: Viewer
   m_TagString: Untagged
@@ -111,6 +112,19 @@ MonoBehaviour:
   _defaultCameraPosition: {x: 0, y: 0, z: 0}
   _mode: 1
   _virtualCamera: {fileID: 0}
+--- !u!135 &1890355319263202008
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4670699324735205308}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4670699324808435031
 GameObject:
   m_ObjectHideFlags: 0

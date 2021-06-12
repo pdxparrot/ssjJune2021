@@ -17,10 +17,10 @@ namespace pdxpartyparrot.Game.Camera
             Viewer.Set3D(gameData.FoV);
         }
 
-        public void FollowTarget(GameObject target)
+        public void FollowTarget(Transform target)
         {
-            LookAt(target.transform);
-            Follow(target.transform);
+            LookAt(target);
+            Follow(target);
         }
     }
 }

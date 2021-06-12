@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12a77b716635043458cd33125d911e88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _initialSceneName: first_level
+  _initialSceneName: 
   _currentSceneName: 
   _makeInitialSceneActive: 1
   _enterEffect: {fileID: 0}

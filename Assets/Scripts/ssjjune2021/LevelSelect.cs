@@ -10,7 +10,9 @@ namespace pdxpartyparrot.ssjjune2021
 
         public void OnSelectLevel(string level)
         {
-            GameStateManager.Instance.StartLocal(GameManager.Instance.GameData.MainGameStatePrefab);
+            GameStateManager.Instance.StartLocal(GameManager.Instance.GameData.MainGameStatePrefab, state => {
+                state.OverrideCurrentScene(level);
+            });
         }
 
         #endregion

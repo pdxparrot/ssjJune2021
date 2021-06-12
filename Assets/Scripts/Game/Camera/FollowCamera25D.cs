@@ -8,7 +8,8 @@ using UnityEngine.Assertions;
 
 namespace pdxpartyparrot.Game.Camera
 {
-    [RequireComponent(typeof(CinemachineFramingTransposer))]
+    // this has to be set as the Body in order to work correctly
+    //[RequireComponent(typeof(CinemachineFramingTransposer))]
     public class FollowCamera25D : CinemachineViewer, IPlayerViewer
     {
         public Viewer Viewer => this;

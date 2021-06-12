@@ -11,7 +11,7 @@ namespace pdxpartyparrot.Game.Data.Characters.BehaviorComponents
         [SerializeField]
         [Range(0, 100)]
         [Tooltip("How high does the character jump")]
-        private float _jumpHeight = 30.0f;
+        private float _jumpHeight = 10.0f;
 
         public float JumpHeight => _jumpHeight;
     }

@@ -55,7 +55,7 @@ namespace pdxpartyparrot.Game.Players.Input
 
         private CircularBuffer<Vector3> _lookBuffer;
 
-        public Vector3 LastLook => _moveBuffer.Tail;
+        public Vector3 LastLook => _lookBuffer.Tail;
 
         #endregion
 
@@ -181,17 +181,19 @@ namespace pdxpartyparrot.Game.Players.Input
                     EnableMouseLook = GUILayout.Toggle(EnableMouseLook, "Enable Mouse Look");
                 }
 
-                GUILayout.BeginVertical("Move Buffer", GUI.skin.box);
+                // TODO: we buffer way too much movement / look to render them here
+
+                /*GUILayout.BeginVertical("Move Buffer", GUI.skin.box);
                 foreach(var move in _moveBuffer) {
                     GUILayout.Label(move.ToString());
                 }
-                GUILayout.EndVertical();
+                GUILayout.EndVertical();*/
 
-                GUILayout.BeginVertical("Look Buffer", GUI.skin.box);
+                /*GUILayout.BeginVertical("Look Buffer", GUI.skin.box);
                 foreach(var look in _lookBuffer) {
                     GUILayout.Label(look.ToString());
                 }
-                GUILayout.EndVertical();
+                GUILayout.EndVertical();*/
             };
         }
 

@@ -92,7 +92,7 @@ namespace pdxpartyparrot.Game.Players.Input
                 return;
             }
 
-            if(Core.Input.InputManager.Instance.EnableDebug) {
+            if(InputManager.Instance.EnableDebug) {
                 Debug.Log($"Pause: {context.action.phase}");
             }
 

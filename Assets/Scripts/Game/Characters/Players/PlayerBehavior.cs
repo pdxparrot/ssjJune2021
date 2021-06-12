@@ -24,6 +24,18 @@ namespace pdxpartyparrot.Game.Characters.Players
 
         public Vector3 MoveDirection => _moveDirection;
 
+        [SerializeField]
+        [ReadOnly]
+        private Vector3 _lookRotation;
+
+        public Vector3 LookRotation => _lookRotation;
+
+        public virtual Transform LookTarget { get; } = null;
+
+        public float HorizontalLookSpeed => PlayerBehaviorData == null ? 0.0f : PlayerBehaviorData.HorizontalLookSpeed;
+
+        public float VerticalLookSpeed => PlayerBehaviorData == null ? 0.0f : PlayerBehaviorData.VerticalLookSpeed;
+
         #region Unity Lifecycle
 
         protected override void Update()
@@ -35,10 +47,34 @@ namespace pdxpartyparrot.Game.Characters.Players
             // set move direction from input
             Vector3 moveDirection = Vector3.MoveTowards(MoveDirection, Player.PlayerInputHandler.LastMove, dt * Player.PlayerInputHandler.PlayerInputData.MovementLerpSpeed);
             SetMoveDirection(moveDirection);
+
+            // set look rotation from input
+            Vector3 lookRotation = Vector3.MoveTowards(LookRotation, Player.PlayerInputHandler.LastLook, dt * Player.PlayerInputHandler.PlayerInputData.LookLerpSpeed);
+            SetLookRotation(lookRotation);
         }
 
         protected virtual void LateUpdate()
         {
+            float dt = Time.deltaTime;
+
+            if(null != LookTarget) {
+                if(PlayerBehaviorData.AllowLookHorizontal) {
+                    float velocity = LookRotation.x * HorizontalLookSpeed;
+                    Vector3 rotation = LookTarget.transform.eulerAngles;
+                    rotation.y += velocity * dt;
+
+                    LookTarget.transform.eulerAngles = rotation;
+                }
+
+                if(PlayerBehaviorData.AllowLookVertical) {
+                    float velocity = LookRotation.y * VerticalLookSpeed;
+                    Vector3 rotation = LookTarget.transform.eulerAngles;
+                    rotation.x += velocity * dt;
+
+                    LookTarget.transform.eulerAngles = rotation;
+                }
+            }
+
             Owner.IsMoving = !Mathf.Approximately(MoveDirection.sqrMagnitude, 0.0f);
         }
 
@@ -52,6 +88,7 @@ namespace pdxpartyparrot.Game.Characters.Players
             base.Initialize(behaviorData);
 
             _moveDirection = Vector3.zero;
+            _lookRotation = Vector3.zero;
         }
 
         public virtual void InitializeLocalPlayerBehavior()
@@ -63,6 +100,13 @@ namespace pdxpartyparrot.Game.Characters.Players
             _moveDirection = CanMove ? Vector3.ClampMagnitude(moveDirection, 1.0f) : Vector3.zero;
         }
 
+        public void SetLookRotation(Vector3 lookRotation)
+        {
+            _lookRotation = lookRotation;
+        }
+
+        // TODO: not sure if the alignmovement with viewer code here works anymore
+
         protected override void AnimationUpdate(float dt)
         {
             if(!CanMove) {
@@ -73,7 +117,7 @@ namespace pdxpartyparrot.Game.Characters.Players
             Vector3 forward = MoveDirection;
             if(PlayerBehaviorData.AlignMovementWithViewer && null != Player.Viewer) {
                 // align with the camera instead of the movement
-                forward = (Quaternion.AngleAxis(Player.Viewer.transform.localEulerAngles.y, Vector3.up) * MoveDirection).normalized;
+                forward = (Quaternion.AngleAxis(LookRotation.y, Vector3.up) * MoveDirection).normalized;
             }
 
             AlignToMovement(forward);
@@ -103,7 +147,7 @@ namespace pdxpartyparrot.Game.Characters.Players
             Quaternion rotation = Owner.Movement.Rotation;
             if(PlayerBehaviorData.AlignMovementWithViewer && null != Player.Viewer) {
                 // rotate with the camera instead of the movement
-                rotation = Quaternion.AngleAxis(Player.Viewer.transform.localEulerAngles.y, Vector3.up);
+                rotation = Quaternion.AngleAxis(LookRotation.y, Vector3.up);
             }
             velocity = rotation * velocity;
 

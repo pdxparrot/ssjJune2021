@@ -28,4 +28,8 @@ MonoBehaviour:
   _fallingParam: Falling
   _actionBufferSize: 1
   _actionBufferTimeoutMs: 500
+  _allowLookHorizontal: 1
+  _horizontalLookSpeed: 30
+  _allowLookVertical: 0
+  _verticalLookSpeed: 30
   _alignMovementWithViewer: 0

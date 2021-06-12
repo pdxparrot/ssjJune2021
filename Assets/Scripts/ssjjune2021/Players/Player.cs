@@ -12,9 +12,6 @@ namespace pdxpartyparrot.ssjjune2021.Players
 {
     public sealed class Player : Player3D, IWorldBoundaryCollisionListener
     {
-        [SerializeField]
-        private Transform _followTarget;
-
         public PlayerBehavior GamePlayerBehavior => (PlayerBehavior)PlayerBehavior;
 
         private GameViewer PlayerGameViewer => (GameViewer)Viewer;
@@ -58,7 +55,7 @@ namespace pdxpartyparrot.ssjjune2021.Players
                 return false;
             }
 
-            PlayerGameViewer.FollowTarget(_followTarget);
+            PlayerGameViewer.FollowTarget(GamePlayerBehavior.LookTarget);
 
             return true;
         }

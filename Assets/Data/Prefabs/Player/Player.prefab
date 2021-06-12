@@ -239,7 +239,6 @@ MonoBehaviour:
   _manualAnimator: {fileID: 0}
   _networkPlayer: {fileID: 1165146076590566434}
   _inputHandler: {fileID: 196290195439068041}
-  _followTarget: {fileID: 172284198319928425}
 --- !u!1 &1391432127846025747
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,6 +303,8 @@ MonoBehaviour:
   _idleEffect: {fileID: 0}
   _movingEffectTrigger: {fileID: 0}
   _moveDirection: {x: 0, y: 0, z: 0}
+  _lookRotation: {x: 0, y: 0, z: 0}
+  _lookTarget: {fileID: 172284198319928425}
 --- !u!114 &1331090144544693578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,7 +359,7 @@ GameObject:
   m_Component:
   - component: {fileID: 172284198319928425}
   m_Layer: 10
-  m_Name: Follow Target
+  m_Name: Look Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

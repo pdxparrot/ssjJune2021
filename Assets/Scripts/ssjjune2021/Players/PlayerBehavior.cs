@@ -1,12 +1,18 @@
+using UnityEngine;
+using UnityEngine.Assertions;
+
 using pdxpartyparrot.Core.Data.Actors.Components;
 using pdxpartyparrot.ssjjune2021.Data.Players;
-
-using UnityEngine.Assertions;
 
 namespace pdxpartyparrot.ssjjune2021.Players
 {
     public sealed class PlayerBehavior : Game.Characters.Players.PlayerBehavior
     {
+        [SerializeField]
+        private Transform _lookTarget;
+
+        public override Transform LookTarget => _lookTarget;
+
         public PlayerBehaviorData GamePlayerBehaviorData => (PlayerBehaviorData)PlayerBehaviorData;
 
         public override void Initialize(ActorBehaviorComponentData behaviorData)

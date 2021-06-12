@@ -872,6 +872,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4344338272049937716, guid: 755586f9a3fc85840922652e453cf173, type: 3}
     - target: {fileID: 9034441829786416180, guid: 3ff8b32e10fcfe34083434e885396758, type: 3}
+      propertyPath: _gameUiManagerPrefab
+      value: 
+      objectReference: {fileID: 183631736264673730, guid: 4e775660ab53dfb4c84e6650568a64d4, type: 3}
+    - target: {fileID: 9034441829786416180, guid: 3ff8b32e10fcfe34083434e885396758, type: 3}
       propertyPath: _viewerManagerPrefab
       value: 
       objectReference: {fileID: 8699339900379015522, guid: 1b679003964cfab4898137ad942bbc23, type: 3}

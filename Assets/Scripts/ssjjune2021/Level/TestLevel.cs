@@ -22,6 +22,8 @@ namespace pdxpartyparrot.ssjjune2021.Level
 
         protected override void Awake()
         {
+            base.Awake();
+
             _clues = GetComponent<Clues>();
             _clues.CompleteEvent += CluesCompleteEventHandler;
         }
@@ -30,7 +32,7 @@ namespace pdxpartyparrot.ssjjune2021.Level
 
         public void RegisterExit(Exit exit)
         {
-            Assert.IsTrue(null == _exit);
+            Assert.IsNull(_exit);
 
             _exit = exit;
             _exit.Enabled = false;

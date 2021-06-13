@@ -13,6 +13,11 @@ namespace pdxpartyparrot.ssjjune2021.Items
 
         public Type InteractableType => typeof(Clue);
 
+        [SerializeField]
+        private MemoryFragmentType _fragmentType = MemoryFragmentType.Working;
+
+        public MemoryFragmentType FragmentType => _fragmentType;
+
         #region Unity Lifecycle
 
         private void Awake()

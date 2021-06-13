@@ -1,3 +1,5 @@
+using System;
+
 using UnityEngine;
 
 using pdxpartyparrot.Game.Level;
@@ -5,15 +7,30 @@ using pdxpartyparrot.Game.Level;
 namespace pdxpartyparrot.ssjjune2021.Level
 {
     // TODO: just an example
+    [RequireComponent(typeof(Clues))]
     public sealed class TestLevel : LevelHelper, IBaseLevel
     {
-        [SerializeField]
-        private int _memoryFragmentsCollected = 0;
+        private Clues _clues;
 
-        public int MemoryFragmentsCollected
+        public Clues Clues => _clues;
+
+        #region Unity Lifecycle
+
+        protected override void Awake()
         {
-            get => _memoryFragmentsCollected;
-            private set => _memoryFragmentsCollected = value;
+            _clues = GetComponent<Clues>();
+            _clues.CompleteEvent += CluesCompleteEventHandler;
         }
+
+        #endregion
+
+        #region Event Handlers
+
+        private void CluesCompleteEventHandler(object sender, EventArgs args)
+        {
+            Debug.Log("clues are complete, enable exit");
+        }
+
+        #endregion
     }
 }

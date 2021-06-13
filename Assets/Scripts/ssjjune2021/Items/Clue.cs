@@ -12,5 +12,21 @@ namespace pdxpartyparrot.ssjjune2021.Items
         public bool CanInteract => true;
 
         public Type InteractableType => typeof(Clue);
+
+        #region Unity Lifecycle
+
+        private void Awake()
+        {
+            GameManager.Instance.BaseLevel.Clues.RegisterClue(this);
+        }
+
+        private void OnDestroy()
+        {
+            if(GameManager.HasInstance && null != GameManager.Instance.BaseLevel) {
+                GameManager.Instance.BaseLevel.Clues.UnRegisterClue(this);
+            }
+        }
+
+        #endregion
     }
 }

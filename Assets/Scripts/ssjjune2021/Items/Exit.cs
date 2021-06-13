@@ -29,6 +29,8 @@ namespace pdxpartyparrot.ssjjune2021.Items
         private void Awake()
         {
             GameManager.Instance.BaseLevel.RegisterExit(this);
+
+            GetComponent<Collider>().isTrigger = true;
         }
 
         private void OnDestroy()
@@ -36,6 +38,15 @@ namespace pdxpartyparrot.ssjjune2021.Items
             if(GameManager.HasInstance && null != GameManager.Instance.BaseLevel) {
                 GameManager.Instance.BaseLevel.UnRegisterExit(this);
             }
+        }
+
+        #endregion
+
+        #region Interactions
+
+        public void Interact()
+        {
+            // TODO: display dialogue / confirmation
         }
 
         #endregion

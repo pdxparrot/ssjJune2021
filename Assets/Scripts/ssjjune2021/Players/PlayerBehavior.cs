@@ -6,6 +6,7 @@ using pdxpartyparrot.ssjjune2021.Data.Players;
 
 namespace pdxpartyparrot.ssjjune2021.Players
 {
+    [RequireComponent(typeof(TailorBehavior))]
     public sealed class PlayerBehavior : Game.Characters.Players.PlayerBehavior
     {
         [SerializeField]
@@ -15,12 +16,16 @@ namespace pdxpartyparrot.ssjjune2021.Players
 
         public PlayerBehaviorData GamePlayerBehaviorData => (PlayerBehaviorData)PlayerBehaviorData;
 
+        private TailorBehavior _tailorBehavior;
+
         public override void Initialize(ActorBehaviorComponentData behaviorData)
         {
             Assert.IsTrue(Owner is Player);
             Assert.IsTrue(behaviorData is PlayerBehaviorData);
 
             base.Initialize(behaviorData);
+
+            _tailorBehavior = GetComponent<TailorBehavior>();
         }
     }
 }

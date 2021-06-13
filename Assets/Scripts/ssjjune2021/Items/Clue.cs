@@ -2,7 +2,9 @@ using System;
 
 using UnityEngine;
 
+using pdxpartyparrot.Core.Util;
 using pdxpartyparrot.Game.Interactables;
+using pdxpartyparrot.ssjjune2021.Players;
 
 namespace pdxpartyparrot.ssjjune2021.Items
 {
@@ -18,11 +20,26 @@ namespace pdxpartyparrot.ssjjune2021.Items
 
         public MemoryFragmentType FragmentType => _fragmentType;
 
+        [SerializeField]
+        private int _requiredFragments = 1;
+
+        [SerializeField]
+        [ReadOnly]
+        private int _collectedFragments;
+
+        [SerializeField]
+        [TextArea]
+        private string _dialogueText;
+
+        public bool IsComplete => _collectedFragments >= _requiredFragments;
+
         #region Unity Lifecycle
 
         private void Awake()
         {
             GameManager.Instance.BaseLevel.Clues.RegisterClue(this);
+
+            GetComponent<Collider>().isTrigger = true;
         }
 
         private void OnDestroy()
@@ -30,6 +47,17 @@ namespace pdxpartyparrot.ssjjune2021.Items
             if(GameManager.HasInstance && null != GameManager.Instance.BaseLevel) {
                 GameManager.Instance.BaseLevel.Clues.UnRegisterClue(this);
             }
+        }
+
+        #endregion
+
+        #region Interactions
+
+        public void Interact(TailorBehavior tailor)
+        {
+            _collectedFragments += tailor.CollectFragments(FragmentType);
+
+            // TODO: display dialogue
         }
 
         #endregion

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
+using pdxpartyparrot.Core.Util;
 using pdxpartyparrot.ssjjune2021.Items;
 
 namespace pdxpartyparrot.ssjjune2021.Level
@@ -15,9 +16,13 @@ namespace pdxpartyparrot.ssjjune2021.Level
 
         #endregion
 
-        private HashSet<Clue> _activeClues = new HashSet<Clue>();
+        [SerializeReference]
+        [ReadOnly]
+        private /*readonly*/ HashSet<Clue> _activeClues = new HashSet<Clue>();
 
-        private HashSet<Clue> _solvedClues = new HashSet<Clue>();
+        [SerializeReference]
+        [ReadOnly]
+        private /*readonly*/ HashSet<Clue> _solvedClues = new HashSet<Clue>();
 
         public bool IsComplete => _activeClues.Count < 1;
 

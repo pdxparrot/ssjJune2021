@@ -1,8 +1,10 @@
 using System;
 
 using UnityEngine;
+using UnityEngine.Assertions;
 
 using pdxpartyparrot.Game.Level;
+using pdxpartyparrot.ssjjune2021.Items;
 
 namespace pdxpartyparrot.ssjjune2021.Level
 {
@@ -14,6 +16,8 @@ namespace pdxpartyparrot.ssjjune2021.Level
 
         public Clues Clues => _clues;
 
+        private Exit _exit;
+
         #region Unity Lifecycle
 
         protected override void Awake()
@@ -24,11 +28,26 @@ namespace pdxpartyparrot.ssjjune2021.Level
 
         #endregion
 
+        public void RegisterExit(Exit exit)
+        {
+            Assert.IsTrue(null == _exit);
+
+            _exit = exit;
+            _exit.Enabled = false;
+        }
+
+        public void UnRegisterExit(Exit exit)
+        {
+            Assert.IsTrue(_exit == exit);
+
+            _exit = null;
+        }
+
         #region Event Handlers
 
         private void CluesCompleteEventHandler(object sender, EventArgs args)
         {
-            Debug.Log("clues are complete, enable exit");
+            _exit.Enabled = true;
         }
 
         #endregion

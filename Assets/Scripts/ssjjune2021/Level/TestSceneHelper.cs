@@ -1,5 +1,3 @@
-using System;
-
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -23,7 +21,6 @@ namespace pdxpartyparrot.ssjjune2021.Level
             base.Awake();
 
             _clues = GetComponent<Clues>();
-            _clues.CompleteEvent += CluesCompleteEventHandler;
         }
 
         #endregion
@@ -33,7 +30,6 @@ namespace pdxpartyparrot.ssjjune2021.Level
             Assert.IsNull(_exit);
 
             _exit = exit;
-            _exit.Enabled = false;
         }
 
         public void UnRegisterExit(Exit exit)
@@ -42,14 +38,5 @@ namespace pdxpartyparrot.ssjjune2021.Level
 
             _exit = null;
         }
-
-        #region Event Handlers
-
-        private void CluesCompleteEventHandler(object sender, EventArgs args)
-        {
-            _exit.Enabled = true;
-        }
-
-        #endregion
     }
 }

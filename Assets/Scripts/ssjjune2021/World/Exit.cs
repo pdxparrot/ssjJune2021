@@ -10,7 +10,7 @@ namespace pdxpartyparrot.ssjjune2021.World
     [RequireComponent(typeof(Collider))]
     public sealed class Exit : MonoBehaviour, IInteractable
     {
-        public bool CanInteract => true;
+        public bool CanInteract => Enabled;
 
         public Type InteractableType => typeof(Exit);
 
@@ -21,7 +21,7 @@ namespace pdxpartyparrot.ssjjune2021.World
         public bool Enabled
         {
             get => _enabled;
-            set => _enabled = value;
+            private set => _enabled = value;
         }
 
         #region Unity Lifecycle
@@ -39,6 +39,7 @@ namespace pdxpartyparrot.ssjjune2021.World
                 GameManager.Instance.GameReadyEvent -= GameReadyEventHandler;
 
                 if(null != GameManager.Instance.BaseLevel) {
+                    GameManager.Instance.BaseLevel.Clues.CompleteEvent -= CluesCompleteEventHandler;
                     GameManager.Instance.BaseLevel.UnRegisterExit(this);
                 }
             }
@@ -51,6 +52,8 @@ namespace pdxpartyparrot.ssjjune2021.World
         public void Interact()
         {
             // TODO: display dialogue / confirmation
+
+            Debug.Log("Exit");
         }
 
         #endregion
@@ -60,6 +63,14 @@ namespace pdxpartyparrot.ssjjune2021.World
         private void GameReadyEventHandler(object sender, EventArgs args)
         {
             GameManager.Instance.BaseLevel.RegisterExit(this);
+            GameManager.Instance.BaseLevel.Clues.CompleteEvent += CluesCompleteEventHandler;
+        }
+
+        private void CluesCompleteEventHandler(object sender, EventArgs args)
+        {
+            Debug.Log("Exit enabled");
+
+            Enabled = true;
         }
 
         #endregion

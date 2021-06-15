@@ -16,7 +16,7 @@ namespace pdxpartyparrot.ssjjune2021.Players
 
         public PlayerBehaviorData GamePlayerBehaviorData => (PlayerBehaviorData)PlayerBehaviorData;
 
-        private TailorBehavior _tailorBehavior;
+        public TailorBehavior TailorBehavior { get; private set; }
 
         public override void Initialize(ActorBehaviorComponentData behaviorData)
         {
@@ -25,7 +25,7 @@ namespace pdxpartyparrot.ssjjune2021.Players
 
             base.Initialize(behaviorData);
 
-            _tailorBehavior = GetComponent<TailorBehavior>();
+            TailorBehavior = GetComponent<TailorBehavior>();
         }
     }
 }

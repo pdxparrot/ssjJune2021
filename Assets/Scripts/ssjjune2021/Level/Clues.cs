@@ -24,8 +24,6 @@ namespace pdxpartyparrot.ssjjune2021.Level
         [ReadOnly]
         private /*readonly*/ HashSet<Clue> _solvedClues = new HashSet<Clue>();
 
-        public bool IsComplete => _activeClues.Count < 1;
-
         public void RegisterClue(Clue clue)
         {
             _activeClues.Add(clue);
@@ -40,10 +38,12 @@ namespace pdxpartyparrot.ssjjune2021.Level
 
         public void SolveClue(Clue clue)
         {
+            Debug.Log($"Solved clue {clue.name}");
+
             _activeClues.Remove(clue);
             _solvedClues.Add(clue);
 
-            if(IsComplete) {
+            if(_activeClues.Count < 1) {
                 CompleteEvent?.Invoke(this, EventArgs.Empty);
             }
         }

@@ -1,23 +1,17 @@
 using UnityEngine;
-using UnityEngine.Assertions;
 
-using pdxpartyparrot.Game.Collectables;
-using pdxpartyparrot.Game.Data;
-using pdxpartyparrot.ssjjune2021.Data;
+using pdxpartyparrot.Core.Util;
 
 namespace pdxpartyparrot.ssjjune2021.Items
 {
     [RequireComponent(typeof(Collider))]
-    public sealed class MemoryFragment : MonoBehaviour, ICollectable
+    public sealed class MemoryFragment : MonoBehaviour
     {
-        public enum MemoryFragmentType
-        {
-            Working,
-            Short,
-            Long,
-        }
+        public bool CanBeCollected => !_collected;
 
-        public bool CanBeCollected => true;
+        [SerializeField]
+        [ReadOnly]
+        private bool _collected;
 
         [SerializeField]
         private MemoryFragmentType _fragmentType = MemoryFragmentType.Working;
@@ -33,9 +27,11 @@ namespace pdxpartyparrot.ssjjune2021.Items
 
         #endregion
 
-        public void Initialize(CollectableData data)
+        public void Collect()
         {
-            Assert.IsTrue(data is MemoryFragmentData);
+            _collected = true;
+
+            gameObject.SetActive(false);
         }
     }
 }

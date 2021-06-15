@@ -10,6 +10,8 @@ namespace pdxpartyparrot.ssjjune2021.Players
 {
     public sealed class PlayerInputHandler : ThirdPersonPlayerInputHandler
     {
+        private Player GamePlayer => (Player)Player;
+
         #region Unity Lifecycle
 
         protected override void Awake()
@@ -50,7 +52,7 @@ namespace pdxpartyparrot.ssjjune2021.Players
             }
 
             if(context.performed) {
-                Debug.Log("TODO: interact?");
+                GamePlayer.GamePlayerBehavior.TailorBehavior.Interact();
             }
         }
 

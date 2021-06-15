@@ -4,10 +4,12 @@ using UnityEngine;
 
 using pdxpartyparrot.Core.Collections;
 using pdxpartyparrot.Core.Util;
+using pdxpartyparrot.Game.Interactables;
 using pdxpartyparrot.ssjjune2021.Items;
 
 namespace pdxpartyparrot.ssjjune2021.Players
 {
+    [RequireComponent(typeof(Interactables3D))]
     public sealed class TailorBehavior : MonoBehaviour
     {
         [SerializeReference]

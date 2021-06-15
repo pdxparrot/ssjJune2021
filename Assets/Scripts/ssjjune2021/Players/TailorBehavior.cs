@@ -14,6 +14,15 @@ namespace pdxpartyparrot.ssjjune2021.Players
         [ReadOnly]
         private /*readonly*/ Dictionary<MemoryFragmentType, int> _fragments = new Dictionary<MemoryFragmentType, int>();
 
+        #region Unity Lifecycle
+
+        private void OnTriggerEnter(Collider other)
+        {
+            Debug.Log("trigger enter");
+        }
+
+        #endregion
+
         public int CollectFragments(MemoryFragmentType type)
         {
             _fragments.Remove(type, out int count);

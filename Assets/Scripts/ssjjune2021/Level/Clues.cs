@@ -16,11 +16,11 @@ namespace pdxpartyparrot.ssjjune2021.Level
 
         #endregion
 
-        [SerializeReference]
+        //[SerializeReference]
         [ReadOnly]
         private /*readonly*/ HashSet<Clue> _activeClues = new HashSet<Clue>();
 
-        [SerializeReference]
+        //[SerializeReference]
         [ReadOnly]
         private /*readonly*/ HashSet<Clue> _solvedClues = new HashSet<Clue>();
 

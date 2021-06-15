@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 537593689262422611}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,9 +40,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5900796073761524278}
-  - component: {fileID: 8671510251612948683}
+  - component: {fileID: 6650546167732120483}
   - component: {fileID: 476678675007420654}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Clue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64,8 +64,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &8671510251612948683
-BoxCollider:
+--- !u!135 &6650546167732120483
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -75,7 +75,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &476678675007420654
 MonoBehaviour:
@@ -89,6 +89,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbb2733d4fd57bf4bb4f4fd950de879f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _fragmentType: 0
+  _requiredFragments: 1
+  _collectedFragments: 0
+  _dialogueText: 
 --- !u!1 &5937748266796459233
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,7 +104,7 @@ GameObject:
   - component: {fileID: 8727889000267460006}
   - component: {fileID: 4684313029837065740}
   - component: {fileID: 6066723752443761697}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

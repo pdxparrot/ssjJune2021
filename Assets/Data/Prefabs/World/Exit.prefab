@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 537593689262422611}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,9 +40,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5900796073761524278}
-  - component: {fileID: 8671510251612948683}
+  - component: {fileID: 4288878527189591383}
   - component: {fileID: -5844853033366953328}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64,8 +64,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &8671510251612948683
-BoxCollider:
+--- !u!135 &4288878527189591383
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -75,7 +75,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &-5844853033366953328
 MonoBehaviour:
@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 8727889000267460006}
   - component: {fileID: 4684313029837065740}
   - component: {fileID: 6066723752443761697}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

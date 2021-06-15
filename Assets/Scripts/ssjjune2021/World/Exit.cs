@@ -5,7 +5,7 @@ using UnityEngine;
 using pdxpartyparrot.Core.Util;
 using pdxpartyparrot.Game.Interactables;
 
-namespace pdxpartyparrot.ssjjune2021.Items
+namespace pdxpartyparrot.ssjjune2021.World
 {
     [RequireComponent(typeof(Collider))]
     public sealed class Exit : MonoBehaviour, IInteractable
@@ -28,15 +28,19 @@ namespace pdxpartyparrot.ssjjune2021.Items
 
         private void Awake()
         {
-            GameManager.Instance.BaseLevel.RegisterExit(this);
+            GameManager.Instance.GameReadyEvent += GameReadyEventHandler;
 
             GetComponent<Collider>().isTrigger = true;
         }
 
         private void OnDestroy()
         {
-            if(GameManager.HasInstance && null != GameManager.Instance.BaseLevel) {
-                GameManager.Instance.BaseLevel.UnRegisterExit(this);
+            if(GameManager.HasInstance) {
+                GameManager.Instance.GameReadyEvent -= GameReadyEventHandler;
+
+                if(null != GameManager.Instance.BaseLevel) {
+                    GameManager.Instance.BaseLevel.UnRegisterExit(this);
+                }
             }
         }
 
@@ -47,6 +51,15 @@ namespace pdxpartyparrot.ssjjune2021.Items
         public void Interact()
         {
             // TODO: display dialogue / confirmation
+        }
+
+        #endregion
+
+        #region Event Handlers
+
+        private void GameReadyEventHandler(object sender, EventArgs args)
+        {
+            GameManager.Instance.BaseLevel.RegisterExit(this);
         }
 
         #endregion

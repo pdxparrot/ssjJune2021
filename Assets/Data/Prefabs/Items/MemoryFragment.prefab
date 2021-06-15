@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3002418912037506108}
   - component: {fileID: 6308823234534155295}
   - component: {fileID: 1807604437357396314}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 537593689262422611}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 5900796073761524278}
   - component: {fileID: 4717157823043905642}
   - component: {fileID: 5837285042925329693}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: MemoryFragment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,10 +154,10 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5777450083639978148}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5837285042925329693
 MonoBehaviour:
@@ -171,3 +171,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4915dac0c4efe345a4543f1db3defb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _fragmentType: 0

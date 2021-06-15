@@ -3,15 +3,13 @@ using System;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-using pdxpartyparrot.Game.Level;
 using pdxpartyparrot.ssjjune2021.Items;
 using pdxpartyparrot.ssjjune2021.World;
 
 namespace pdxpartyparrot.ssjjune2021.Level
 {
-    // TODO: just an example
     [RequireComponent(typeof(Clues))]
-    public sealed class TestLevel : LevelHelper, IBaseLevel
+    public sealed class TestSceneHelper : Game.Level.TestSceneHelper, IBaseLevel
     {
         private Clues _clues;
 

@@ -37,15 +37,19 @@ namespace pdxpartyparrot.ssjjune2021.Items
 
         private void Awake()
         {
-            GameManager.Instance.BaseLevel.Clues.RegisterClue(this);
+            GameManager.Instance.GameReadyEvent += GameReadyEventHandler;
 
             GetComponent<Collider>().isTrigger = true;
         }
 
         private void OnDestroy()
         {
-            if(GameManager.HasInstance && null != GameManager.Instance.BaseLevel) {
-                GameManager.Instance.BaseLevel.Clues.UnRegisterClue(this);
+            if(GameManager.HasInstance) {
+                GameManager.Instance.GameReadyEvent -= GameReadyEventHandler;
+
+                if(null != GameManager.Instance.BaseLevel) {
+                    GameManager.Instance.BaseLevel.Clues.UnRegisterClue(this);
+                }
             }
         }
 
@@ -58,6 +62,15 @@ namespace pdxpartyparrot.ssjjune2021.Items
             _collectedFragments += tailor.CollectFragments(FragmentType);
 
             // TODO: display dialogue
+        }
+
+        #endregion
+
+        #region Event Handlers
+
+        private void GameReadyEventHandler(object sender, EventArgs args)
+        {
+            GameManager.Instance.BaseLevel.Clues.RegisterClue(this);
         }
 
         #endregion

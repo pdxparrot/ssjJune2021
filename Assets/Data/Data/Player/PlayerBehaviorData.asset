@@ -33,4 +33,4 @@ MonoBehaviour:
   _allowLookVertical: 1
   _verticalLookSpeed: 75
   _maxVerticalRotation: 45
-  _alignMovementWithViewer: 0
+  _alignMovementWithViewer: 1

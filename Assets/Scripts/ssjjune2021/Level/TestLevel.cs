@@ -2,6 +2,8 @@ using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 using pdxpartyparrot.Core.Util;
 using pdxpartyparrot.Game.Level;
@@ -14,6 +16,9 @@ namespace pdxpartyparrot.ssjjune2021.Level
     [RequireComponent(typeof(Clues))]
     public sealed class TestLevel : LevelHelper, IBaseLevel
     {
+        [SerializeField]
+        private Key _cheatKey = Key.T;
+
         //[SerializeReference]
         [ReadOnly]
         private /*readonly*/ HashSet<MemoryFragment> _memoryFragments = new HashSet<MemoryFragment>();
@@ -31,6 +36,15 @@ namespace pdxpartyparrot.ssjjune2021.Level
             base.Awake();
 
             _clues = GetComponent<Clues>();
+        }
+
+        private void FixedUpdate()
+        {
+#if UNITY_EDITOR
+            if(Keyboard.current[_cheatKey].wasPressedThisFrame) {
+                GameManager.Instance.Exit(SceneManager.GetActiveScene().name);
+            }
+#endif
         }
 
         #endregion
@@ -61,7 +75,7 @@ namespace pdxpartyparrot.ssjjune2021.Level
 
         public void Exit()
         {
-            GameManager.Instance.Exit();
+            GameManager.Instance.Exit(SceneManager.GetActiveScene().name);
         }
     }
 }

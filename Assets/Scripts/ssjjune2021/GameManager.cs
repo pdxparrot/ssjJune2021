@@ -1,6 +1,9 @@
+using System.Collections.Generic;
+
 using UnityEngine;
 
 using pdxpartyparrot.Core.Camera;
+using pdxpartyparrot.Core.Util;
 using pdxpartyparrot.Game;
 using pdxpartyparrot.Game.State;
 using pdxpartyparrot.ssjjune2021.Camera;
@@ -17,6 +20,10 @@ namespace pdxpartyparrot.ssjjune2021
 
         public GameViewer Viewer { get; private set; }
 
+        //[SerializeReference]
+        [ReadOnly]
+        private /*readonly*/ HashSet<string> _completedLevels = new HashSet<string>();
+
         public void InitViewer()
         {
             Viewer = ViewerManager.Instance.AcquireViewer<GameViewer>();
@@ -27,11 +34,20 @@ namespace pdxpartyparrot.ssjjune2021
             Viewer.Initialize(GameGameData);
         }
 
-        public void Exit()
+        public void Exit(string level)
         {
+            Debug.Log($"Completed level {level}");
+
+            _completedLevels.Add(level);
+
             GameUnReady();
 
             GameStateManager.Instance.TransitionStateAsync(GameGameData.LevelSelectStatePrefab);
+        }
+
+        public bool IsLevelCompleted(string level)
+        {
+            return _completedLevels.Contains(level);
         }
     }
 }

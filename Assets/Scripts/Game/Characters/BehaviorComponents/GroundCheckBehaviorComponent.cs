@@ -55,7 +55,7 @@ namespace pdxpartyparrot.Game.Characters.BehaviorComponents
 
         private float GroundCheckRadius => null == Behavior ? 0.0f : Behavior.Owner.Radius - 0.1f;
 
-        private Vector3 GroundCheckCenter => null == Behavior ? Vector3.zero : Behavior.Owner.Movement.Position + (GroundCheckRadius * Vector3.up);
+        private Vector3 GroundCheckCenter => null == Behavior ? Vector3.zero : Behavior.Owner.Movement.Position + ((Behavior.Owner.Height * 0.5f - 0.1f) * Vector3.down);
 
         private Coroutine _raycastCoroutine;
 

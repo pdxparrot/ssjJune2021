@@ -11,7 +11,7 @@ namespace pdxpartyparrot.ssjjune2021.Items
     [RequireComponent(typeof(Collider))]
     public sealed class Clue : MonoBehaviour, IInteractable
     {
-        public bool CanInteract => !_solved;
+        public bool CanInteract => !IsSolved;
 
         public Type InteractableType => typeof(Clue);
 
@@ -31,8 +31,7 @@ namespace pdxpartyparrot.ssjjune2021.Items
         [TextArea]
         private string _dialogueText;
 
-        [SerializeField]
-        private bool _solved;
+        public bool IsSolved => _collectedFragments >= _requiredFragments;
 
         #region Unity Lifecycle
 
@@ -56,20 +55,24 @@ namespace pdxpartyparrot.ssjjune2021.Items
 
         #endregion
 
-        #region Interactions
+        public void Reset()
+        {
+            _collectedFragments = 0;
+        }
 
         public void Interact(TailorBehavior tailor)
         {
+            if(IsSolved) {
+                return;
+            }
+
             _collectedFragments += tailor.AssembleFragments(FragmentType);
-            if(_collectedFragments >= _requiredFragments) {
+            if(IsSolved) {
                 GameManager.Instance.BaseLevel.Clues.SolveClue(this);
-                _solved = true;
             }
 
             // TODO: display dialogue
         }
-
-        #endregion
 
         #region Event Handlers
 

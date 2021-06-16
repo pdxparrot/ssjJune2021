@@ -10,7 +10,7 @@ namespace pdxpartyparrot.ssjjune2021.World
     [RequireComponent(typeof(Collider))]
     public sealed class Exit : MonoBehaviour, IInteractable
     {
-        public bool CanInteract => Enabled;
+        public bool CanInteract => IsEnabled;
 
         public Type InteractableType => typeof(Exit);
 
@@ -18,7 +18,7 @@ namespace pdxpartyparrot.ssjjune2021.World
         [ReadOnly]
         private bool _enabled;
 
-        public bool Enabled
+        public bool IsEnabled
         {
             get => _enabled;
             private set => _enabled = value;
@@ -47,16 +47,19 @@ namespace pdxpartyparrot.ssjjune2021.World
 
         #endregion
 
-        #region Interactions
+        public void Reset()
+        {
+            Debug.Log("Resetting exit...");
+
+            IsEnabled = false;
+        }
 
         public void Interact()
         {
             // TODO: display dialogue / confirmation
 
-            Debug.Log("Exit");
+            GameManager.Instance.BaseLevel.Exit();
         }
-
-        #endregion
 
         #region Event Handlers
 
@@ -70,7 +73,7 @@ namespace pdxpartyparrot.ssjjune2021.World
         {
             Debug.Log("Exit enabled");
 
-            Enabled = true;
+            IsEnabled = true;
         }
 
         #endregion

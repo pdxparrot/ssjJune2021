@@ -244,6 +244,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 476678675007420654, guid: 7d123a86a573592498dc6ec3d70ccf54, type: 3}
+      propertyPath: _requiredFragments
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5777450083639978148, guid: 7d123a86a573592498dc6ec3d70ccf54, type: 3}
       propertyPath: m_Name
       value: Clue

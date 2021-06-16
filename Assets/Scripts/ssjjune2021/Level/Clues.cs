@@ -47,5 +47,16 @@ namespace pdxpartyparrot.ssjjune2021.Level
                 CompleteEvent?.Invoke(this, EventArgs.Empty);
             }
         }
+
+        public void Reset()
+        {
+            Debug.Log("Resetting clues...");
+
+            foreach(Clue clue in _solvedClues) {
+                clue.Reset();
+                _activeClues.Add(clue);
+            }
+            _solvedClues.Clear();
+        }
     }
 }

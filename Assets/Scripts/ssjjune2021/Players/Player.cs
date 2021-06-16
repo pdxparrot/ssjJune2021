@@ -47,6 +47,11 @@ namespace pdxpartyparrot.ssjjune2021.Players
             return true;
         }
 
+        public void Reset()
+        {
+            GamePlayerBehavior.TailorBehavior.Reset();
+        }
+
         #region Spawn
 
         public override bool OnSpawn(SpawnPoint spawnpoint)

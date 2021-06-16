@@ -2,6 +2,7 @@ using UnityEngine;
 
 using pdxpartyparrot.Core.Camera;
 using pdxpartyparrot.Game;
+using pdxpartyparrot.Game.State;
 using pdxpartyparrot.ssjjune2021.Camera;
 using pdxpartyparrot.ssjjune2021.Data;
 using pdxpartyparrot.ssjjune2021.Level;
@@ -24,6 +25,13 @@ namespace pdxpartyparrot.ssjjune2021
                 return;
             }
             Viewer.Initialize(GameGameData);
+        }
+
+        public void Exit()
+        {
+            GameUnReady();
+
+            GameStateManager.Instance.TransitionStateAsync(GameGameData.LevelSelectStatePrefab);
         }
     }
 }

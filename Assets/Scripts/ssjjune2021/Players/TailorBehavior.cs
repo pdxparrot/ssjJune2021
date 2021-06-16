@@ -37,6 +37,11 @@ namespace pdxpartyparrot.ssjjune2021.Players
 
         #endregion
 
+        public void Reset()
+        {
+            _fragments.Clear();
+        }
+
         public void Interact()
         {
             if(InteractExit()) {

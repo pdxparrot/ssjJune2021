@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4965814591592732715
+--- !u!1 &8329383119734305407
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7136825962592048146}
-  - component: {fileID: 1160795079466302865}
+  - component: {fileID: 2254935537824634859}
+  - component: {fileID: 7450284421602396844}
   m_Layer: 0
-  m_Name: SceneTester
+  m_Name: GameOverState
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7136825962592048146
+--- !u!4 &2254935537824634859
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4965814591592732715}
+  m_GameObject: {fileID: 8329383119734305407}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,23 +31,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1160795079466302865
+--- !u!114 &7450284421602396844
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4965814591592732715}
+  m_GameObject: {fileID: 8329383119734305407}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a82769941980d7d48955b971af3c4662, type: 3}
+  m_Script: {fileID: 11500000, guid: 5ac53ddb8a4d62d43b39c8f7545a33a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _initialSceneName: 
-  _currentSceneName: 
-  _makeInitialSceneActive: 1
   _enterEffect: {fileID: 0}
   _exitEffect: {fileID: 0}
-  _gameOverState: {fileID: 7450284421602396844, guid: 62758a143d21e654eb75bc30823177f4, type: 3}
-  _testScenes:
-  - test
+  _menuPrefab: {fileID: 0}
+  _completeWaitTimeSeconds: 5
+  _completeTimer:
+    id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: , ns: , asm: }

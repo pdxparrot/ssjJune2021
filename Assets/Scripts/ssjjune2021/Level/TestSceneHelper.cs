@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 using UnityEngine;
@@ -71,5 +72,16 @@ namespace pdxpartyparrot.ssjjune2021.Level
                 player.Reset();
             }
         }
+
+        #region Event Handlers
+
+        protected override void GameStartClientEventHandler(object sender, EventArgs args)
+        {
+            GameManager.Instance.Reset();
+
+            base.GameStartClientEventHandler(sender, args);
+        }
+
+        #endregion
     }
 }

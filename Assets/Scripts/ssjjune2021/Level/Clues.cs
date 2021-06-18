@@ -5,6 +5,7 @@ using UnityEngine;
 
 using pdxpartyparrot.Core.Util;
 using pdxpartyparrot.ssjjune2021.Items;
+using pdxpartyparrot.ssjjune2021.UI;
 
 namespace pdxpartyparrot.ssjjune2021.Level
 {
@@ -24,16 +25,22 @@ namespace pdxpartyparrot.ssjjune2021.Level
         [ReadOnly]
         private /*readonly*/ HashSet<Clue> _solvedClues = new HashSet<Clue>();
 
+        public int CluesRemaining => _activeClues.Count;
+
         public void RegisterClue(Clue clue)
         {
             _activeClues.Add(clue);
             _solvedClues.Remove(clue);
+
+            GameUIManager.Instance.GameGameUI.PlayerHUD.UpdateClues(CluesRemaining);
         }
 
         public void UnRegisterClue(Clue clue)
         {
             _solvedClues.Remove(clue);
             _activeClues.Remove(clue);
+
+            GameUIManager.Instance.GameGameUI.PlayerHUD.UpdateClues(CluesRemaining);
         }
 
         public void SolveClue(Clue clue)
@@ -42,6 +49,8 @@ namespace pdxpartyparrot.ssjjune2021.Level
 
             _activeClues.Remove(clue);
             _solvedClues.Add(clue);
+
+            GameUIManager.Instance.GameGameUI.PlayerHUD.UpdateClues(CluesRemaining);
 
             if(_activeClues.Count < 1) {
                 CompleteEvent?.Invoke(this, EventArgs.Empty);
@@ -57,6 +66,8 @@ namespace pdxpartyparrot.ssjjune2021.Level
                 _activeClues.Add(clue);
             }
             _solvedClues.Clear();
+
+            GameUIManager.Instance.GameGameUI.PlayerHUD.UpdateClues(CluesRemaining);
         }
     }
 }

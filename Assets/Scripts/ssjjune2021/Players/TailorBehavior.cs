@@ -6,6 +6,7 @@ using pdxpartyparrot.Core.Collections;
 using pdxpartyparrot.Core.Util;
 using pdxpartyparrot.Game.Interactables;
 using pdxpartyparrot.ssjjune2021.Items;
+using pdxpartyparrot.ssjjune2021.UI;
 using pdxpartyparrot.ssjjune2021.World;
 
 namespace pdxpartyparrot.ssjjune2021.Players
@@ -86,6 +87,8 @@ namespace pdxpartyparrot.ssjjune2021.Players
 
             int count = _fragments.GetOrAdd(fragment.FragmentType);
             _fragments[fragment.FragmentType] = count + 1;
+
+            GameUIManager.Instance.GameGameUI.PlayerHUD.UpdateMemoryFragments(fragment.FragmentType, _fragments[fragment.FragmentType]);
         }
 
         public int AssembleFragments(MemoryFragmentType fragmentType, int max)
@@ -98,6 +101,8 @@ namespace pdxpartyparrot.ssjjune2021.Players
             Debug.Log($"Assembling {count} fragments of type {fragmentType}");
 
             _fragments[fragmentType] -= count;
+            GameUIManager.Instance.GameGameUI.PlayerHUD.UpdateMemoryFragments(fragmentType, _fragments[fragmentType]);
+
             return count;
         }
     }

@@ -9,6 +9,7 @@ using pdxpartyparrot.Game.State;
 using pdxpartyparrot.ssjjune2021.Camera;
 using pdxpartyparrot.ssjjune2021.Data;
 using pdxpartyparrot.ssjjune2021.Level;
+using pdxpartyparrot.ssjjune2021.UI;
 
 namespace pdxpartyparrot.ssjjune2021
 {
@@ -32,6 +33,11 @@ namespace pdxpartyparrot.ssjjune2021
                 return;
             }
             Viewer.Initialize(GameGameData);
+        }
+
+        public void Reset()
+        {
+            GameUIManager.Instance.GameGameUI.PlayerHUD.Reset();
         }
 
         public void Exit(string level)

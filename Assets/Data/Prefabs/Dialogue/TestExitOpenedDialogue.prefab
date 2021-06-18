@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5416454211401434381}
   - component: {fileID: 7966502490219586054}
   m_Layer: 0
-  m_Name: TestClueSolvedDialogue
+  m_Name: TestExitOpenedDialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47770a04326d65944a5acfcc11f4d0d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: test_clue_solved_dialogue
+  _id: test_exit_opened_dialogue
 --- !u!114 &7966502490219586054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,7 +64,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _nextDialogue: {fileID: 0}
-  _allowCancel: 0
+  _allowCancel: 1
   _enableEffect: {fileID: 0}
   _disableEffect: {fileID: 0}
 --- !u!1 &5211860084820362557
@@ -208,7 +208,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Hi I''m a Solved Clue Dialogue.
+  m_text: 'The exit has opened!
 
 
     Press A to continue'

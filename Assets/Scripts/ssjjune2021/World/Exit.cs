@@ -16,7 +16,10 @@ namespace pdxpartyparrot.ssjjune2021.World
         public Type InteractableType => typeof(Exit);
 
         [SerializeField]
-        private Dialogue _dialoguePrefab;
+        private Dialogue _enabledDialoguePrefab;
+
+        [SerializeField]
+        private Dialogue _exitDialoguePrefab;
 
         [SerializeField]
         [ReadOnly]
@@ -61,8 +64,7 @@ namespace pdxpartyparrot.ssjjune2021.World
 
         public void Interact()
         {
-            // TODO: should be a message box
-            DialogueManager.Instance.ShowDialogue(_dialoguePrefab, () => {
+            DialogueManager.Instance.ShowDialogue(_exitDialoguePrefab, () => {
                 GameManager.Instance.BaseLevel.Exit();
             });
         }
@@ -83,6 +85,10 @@ namespace pdxpartyparrot.ssjjune2021.World
 
             IsEnabled = true;
             gameObject.SetActive(true);
+
+            DialogueManager.Instance.ShowDialogue(_enabledDialoguePrefab, () => {
+                GameManager.Instance.BaseLevel.Exit();
+            });
         }
 
         #endregion

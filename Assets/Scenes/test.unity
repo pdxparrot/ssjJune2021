@@ -479,6 +479,14 @@ PrefabInstance:
       propertyPath: _dialoguePrefab
       value: 
       objectReference: {fileID: 7966502490219586054, guid: 99ffff5a55690fb438d08a4b6a39f030, type: 3}
+    - target: {fileID: -5844853033366953328, guid: fc6db35600951584abaf7e6c6c12e1df, type: 3}
+      propertyPath: _exitDialoguePrefab
+      value: 
+      objectReference: {fileID: 7966502490219586054, guid: 99ffff5a55690fb438d08a4b6a39f030, type: 3}
+    - target: {fileID: -5844853033366953328, guid: fc6db35600951584abaf7e6c6c12e1df, type: 3}
+      propertyPath: _enabledDialoguePrefab
+      value: 
+      objectReference: {fileID: 7966502490219586054, guid: c77dd1308c67a68479c82dff948b049d, type: 3}
     - target: {fileID: 5777450083639978148, guid: fc6db35600951584abaf7e6c6c12e1df, type: 3}
       propertyPath: m_Name
       value: Exit

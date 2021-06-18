@@ -29,7 +29,10 @@ namespace pdxpartyparrot.ssjjune2021.Items
         private int _collectedFragments;
 
         [SerializeField]
-        private Dialogue _dialoguePrefab;
+        private Dialogue _unsolvedDialoguePrefab;
+
+        [SerializeField]
+        private Dialogue _solvedDialoguePrefab;
 
         public bool IsSolved => _collectedFragments >= _requiredFragments;
 
@@ -62,12 +65,11 @@ namespace pdxpartyparrot.ssjjune2021.Items
 
         public void Interact(TailorBehavior tailor)
         {
-            if(IsSolved) {
-                return;
+            if(!IsSolved) {
+                _collectedFragments += tailor.AssembleFragments(FragmentType, _requiredFragments - _collectedFragments);
             }
 
-            DialogueManager.Instance.ShowDialogue(_dialoguePrefab, () => {
-                _collectedFragments += tailor.AssembleFragments(FragmentType);
+            DialogueManager.Instance.ShowDialogue(IsSolved ? _solvedDialoguePrefab : _unsolvedDialoguePrefab, () => {
                 if(IsSolved) {
                     GameManager.Instance.BaseLevel.Clues.SolveClue(this);
                 }

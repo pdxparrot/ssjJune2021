@@ -56,6 +56,7 @@ namespace pdxpartyparrot.ssjjune2021.World
             Debug.Log("Resetting exit...");
 
             IsEnabled = false;
+            gameObject.SetActive(false);
         }
 
         public void Interact()
@@ -72,6 +73,8 @@ namespace pdxpartyparrot.ssjjune2021.World
         {
             GameManager.Instance.BaseLevel.RegisterExit(this);
             GameManager.Instance.BaseLevel.Clues.CompleteEvent += CluesCompleteEventHandler;
+
+            gameObject.SetActive(false);
         }
 
         private void CluesCompleteEventHandler(object sender, EventArgs args)
@@ -79,6 +82,7 @@ namespace pdxpartyparrot.ssjjune2021.World
             Debug.Log("Exit enabled");
 
             IsEnabled = true;
+            gameObject.SetActive(true);
         }
 
         #endregion

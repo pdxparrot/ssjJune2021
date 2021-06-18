@@ -252,6 +252,18 @@ PrefabInstance:
       propertyPath: _requiredFragments
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 476678675007420654, guid: 7d123a86a573592498dc6ec3d70ccf54, type: 3}
+      propertyPath: _solvedDialoguePrefab
+      value: 
+      objectReference: {fileID: 7966502490219586054, guid: 6572f72a41097ba4ba8799b3b8f6c25b, type: 3}
+    - target: {fileID: 476678675007420654, guid: 7d123a86a573592498dc6ec3d70ccf54, type: 3}
+      propertyPath: _unSolvedDialoguePrefab
+      value: 
+      objectReference: {fileID: 7966502490219586054, guid: 77b840ef3bad13d4cbee5570c35e7223, type: 3}
+    - target: {fileID: 476678675007420654, guid: 7d123a86a573592498dc6ec3d70ccf54, type: 3}
+      propertyPath: _unsolvedDialoguePrefab
+      value: 
+      objectReference: {fileID: 7966502490219586054, guid: 77b840ef3bad13d4cbee5570c35e7223, type: 3}
     - target: {fileID: 5777450083639978148, guid: 7d123a86a573592498dc6ec3d70ccf54, type: 3}
       propertyPath: m_Name
       value: Clue

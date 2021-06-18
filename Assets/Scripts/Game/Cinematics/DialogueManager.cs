@@ -18,6 +18,8 @@ namespace pdxpartyparrot.Game.Cinematics
 
         private Action _onComplete;
 
+        private Action _onCancel;
+
         #region Unity Lifecycle
 
         private void Awake()
@@ -27,16 +29,19 @@ namespace pdxpartyparrot.Game.Cinematics
 
         #endregion
 
-        public void ShowDialogue(Dialogue dialoguePrefab, Action onComplete)
+        public void ShowDialogue(Dialogue dialoguePrefab, Action onComplete, Action onCancel = null)
         {
             if(null == dialoguePrefab) {
                 onComplete?.Invoke();
+
                 _onComplete = null;
+                _onCancel = null;
                 return;
             }
 
             _currentDialogue = GameStateManager.Instance.GameUIManager.InstantiateUIPrefab(dialoguePrefab);
             _onComplete = onComplete;
+            _onCancel = onCancel;
         }
 
         public void AdvanceDialogue()
@@ -46,8 +51,26 @@ namespace pdxpartyparrot.Game.Cinematics
             }
 
             Dialogue previousDialogue = _currentDialogue;
-            ShowDialogue(previousDialogue.NextDialogue, _onComplete);
+            _currentDialogue = null;
+
+            ShowDialogue(previousDialogue.NextDialogue, _onComplete, _onCancel);
+
             Destroy(previousDialogue.gameObject);
+        }
+
+        public void CancelDialogue()
+        {
+            if(!ShowingDialogue) {
+                return;
+            }
+
+            Destroy(_currentDialogue.gameObject);
+            _currentDialogue = null;
+
+            _onCancel?.Invoke();
+
+            _onComplete = null;
+            _onCancel = null;
         }
 
         private void InitDebugMenu()

@@ -88,16 +88,16 @@ namespace pdxpartyparrot.ssjjune2021.Players
             _fragments[fragment.FragmentType] = count + 1;
         }
 
-        public int AssembleFragments(MemoryFragmentType fragmentType)
+        public int AssembleFragments(MemoryFragmentType fragmentType, int max)
         {
-            int count = _fragments.GetOrAdd(fragmentType);
+            int count = Mathf.Min(_fragments.GetOrAdd(fragmentType), max);
             if(count < 1) {
                 return 0;
             }
 
             Debug.Log($"Assembling {count} fragments of type {fragmentType}");
 
-            _fragments.Remove(fragmentType);
+            _fragments[fragmentType] -= count;
             return count;
         }
     }

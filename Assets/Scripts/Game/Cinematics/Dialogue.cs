@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 
+using pdxpartyparrot.Core.UI;
+
 namespace pdxpartyparrot.Game.Cinematics
 {
-    [RequireComponent(typeof(RectTransform))]
+    [RequireComponent(typeof(UIObject))]
     public class Dialogue : MonoBehaviour
     {
         [SerializeField]
-        private string _id;
+        private Dialogue _nextDialogue;
 
-        public string Id => _id;
+        public Dialogue NextDialogue => _nextDialogue;
     }
 }

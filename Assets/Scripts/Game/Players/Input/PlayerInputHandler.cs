@@ -6,6 +6,7 @@ using pdxpartyparrot.Core.Input;
 using pdxpartyparrot.Core.Time;
 using pdxpartyparrot.Core.Util;
 using pdxpartyparrot.Game.Characters.Players;
+using pdxpartyparrot.Game.Cinematics;
 using pdxpartyparrot.Game.Data;
 using pdxpartyparrot.Game.State;
 
@@ -59,7 +60,12 @@ namespace pdxpartyparrot.Game.Players.Input
 
         #endregion
 
-        protected virtual bool InputEnabled => !PartyParrotManager.Instance.IsPaused && Player.IsLocalActor && GameStateManager.Instance.GameManager.IsGameReady && !GameStateManager.Instance.GameManager.IsGameOver;
+        protected virtual bool InputEnabled => !PartyParrotManager.Instance.IsPaused
+        && Player.IsLocalActor
+        && GameStateManager.Instance.GameManager.IsGameReady
+        && !GameStateManager.Instance.GameManager.IsGameOver
+        && !CinematicsManager.Instance.RunningCinematic
+        && !DialogueManager.Instance.ShowingDialogue;
 
         [SerializeField]
         [ReadOnly]

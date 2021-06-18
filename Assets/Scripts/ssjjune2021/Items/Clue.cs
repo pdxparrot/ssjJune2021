@@ -3,6 +3,7 @@ using System;
 using UnityEngine;
 
 using pdxpartyparrot.Core.Util;
+using pdxpartyparrot.Game.Cinematics;
 using pdxpartyparrot.Game.Interactables;
 using pdxpartyparrot.ssjjune2021.Players;
 
@@ -28,8 +29,7 @@ namespace pdxpartyparrot.ssjjune2021.Items
         private int _collectedFragments;
 
         [SerializeField]
-        [TextArea]
-        private string _dialogueText;
+        private Dialogue _dialoguePrefab;
 
         public bool IsSolved => _collectedFragments >= _requiredFragments;
 
@@ -66,12 +66,12 @@ namespace pdxpartyparrot.ssjjune2021.Items
                 return;
             }
 
-            _collectedFragments += tailor.AssembleFragments(FragmentType);
-            if(IsSolved) {
-                GameManager.Instance.BaseLevel.Clues.SolveClue(this);
-            }
-
-            // TODO: display dialogue
+            DialogueManager.Instance.ShowDialogue(_dialoguePrefab, () => {
+                _collectedFragments += tailor.AssembleFragments(FragmentType);
+                if(IsSolved) {
+                    GameManager.Instance.BaseLevel.Clues.SolveClue(this);
+                }
+            });
         }
 
         #region Event Handlers

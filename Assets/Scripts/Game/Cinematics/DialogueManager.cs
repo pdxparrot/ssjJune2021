@@ -1,31 +1,61 @@
-﻿using System.Collections.Generic;
-
-using pdxpartyparrot.Core.Util;
-using pdxpartyparrot.Game.Data;
+﻿using System;
 
 using UnityEngine;
+
+using pdxpartyparrot.Core.DebugMenu;
+using pdxpartyparrot.Core.Util;
+using pdxpartyparrot.Game.State;
 
 namespace pdxpartyparrot.Game.Cinematics
 {
     public sealed class DialogueManager : SingletonBehavior<DialogueManager>
     {
         [SerializeField]
-        private DialogueData _data;
+        [ReadOnly]
+        private Dialogue _currentDialogue;
 
-        private readonly Dictionary<string, Dialogue> _dialoguePrefabs = new Dictionary<string, Dialogue>();
+        public bool ShowingDialogue => null != _currentDialogue;
+
+        private Action _onComplete;
 
         #region Unity Lifecycle
 
         private void Awake()
         {
-            /*foreach(Dialogue dialoguePrefab in _data.DialoguePrefabs) {
-                if(_dialoguePrefabs.ContainsKey(dialoguePrefab.Id)) {
-                    Debug.LogWarning($"Overwriting dialogue {dialoguePrefab.Id}");
-                }
-                _dialoguePrefabs[dialoguePrefab.Id] = dialoguePrefab;
-            }*/
+            InitDebugMenu();
         }
 
         #endregion
+
+        public void ShowDialogue(Dialogue dialoguePrefab, Action onComplete)
+        {
+            if(null == dialoguePrefab) {
+                onComplete?.Invoke();
+                _onComplete = null;
+                return;
+            }
+
+            _currentDialogue = GameStateManager.Instance.GameUIManager.InstantiateUIPrefab(dialoguePrefab);
+            _onComplete = onComplete;
+        }
+
+        public void AdvanceDialogue()
+        {
+            if(!ShowingDialogue) {
+                return;
+            }
+
+            Dialogue previousDialogue = _currentDialogue;
+            ShowDialogue(previousDialogue.NextDialogue, _onComplete);
+            Destroy(previousDialogue.gameObject);
+        }
+
+        private void InitDebugMenu()
+        {
+            DebugMenuNode debugMenuNode = DebugMenuManager.Instance.AddNode(() => "Core.DialogueManager");
+            debugMenuNode.RenderContentsAction = () => {
+                GUILayout.Label(ShowingDialogue ? $"Showing dialogue ${_currentDialogue.name}" : "Not showing dialogue");
+            };
+        }
     }
 }

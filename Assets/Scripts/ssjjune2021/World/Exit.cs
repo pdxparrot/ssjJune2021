@@ -3,6 +3,7 @@ using System;
 using UnityEngine;
 
 using pdxpartyparrot.Core.Util;
+using pdxpartyparrot.Game.Cinematics;
 using pdxpartyparrot.Game.Interactables;
 
 namespace pdxpartyparrot.ssjjune2021.World
@@ -13,6 +14,9 @@ namespace pdxpartyparrot.ssjjune2021.World
         public bool CanInteract => IsEnabled;
 
         public Type InteractableType => typeof(Exit);
+
+        [SerializeField]
+        private Dialogue _dialoguePrefab;
 
         [SerializeField]
         [ReadOnly]
@@ -56,9 +60,10 @@ namespace pdxpartyparrot.ssjjune2021.World
 
         public void Interact()
         {
-            // TODO: display dialogue / confirmation
-
-            GameManager.Instance.BaseLevel.Exit();
+            // TODO: should be a message box
+            DialogueManager.Instance.ShowDialogue(_dialoguePrefab, () => {
+                GameManager.Instance.BaseLevel.Exit();
+            });
         }
 
         #region Event Handlers

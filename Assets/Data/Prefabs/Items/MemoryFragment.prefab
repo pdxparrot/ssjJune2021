@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 537593689262422611}
   - component: {fileID: 850985503697133997}
-  - component: {fileID: 800572750748522563}
+  - component: {fileID: 8889144582176171789}
   m_Layer: 15
   m_Name: Model
   m_TagString: Untagged
@@ -132,7 +132,7 @@ MonoBehaviour:
   _localPosition: 1
   _randomizeOnEnable: 1
   _angle: {x: 0, y: 0, z: 0}
---- !u!114 &800572750748522563
+--- !u!114 &8889144582176171789
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,33 +141,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4298139866910443461}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3dbb4052a503da4d87880224384eeef, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e76329fa81e6e04280dc91007790dcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playOnAwake: 1
-  _resetOnEnable: 0
-  _timeScale: 1
-  _useRandomTimeScale: 0
-  _randomTimeScaleMin: 1
-  _randomTimeScaleMax: 1
-  _duration: 1
-  _useRandomDuration: 0
-  _randomDurationMin: 1
-  _randomDurationMax: 1
-  _loops: 0
-  _loopType: 0
-  _ease: 1
-  _firstRunDelay: 0
-  _delay: 0
-  _isFrom: 0
-  _isRelative: 0
-  _firstRun: 1
-  _isPaused: 0
-  _target: {fileID: 0}
-  _from: {x: 0, y: 0, z: 0}
-  _to: {x: 0, y: 0, z: 0}
-  _rotateMode: 0
-  _useLocalRotation: 1
+  _rotation: {x: 0, y: 1, z: 0}
+  _speed: 100
 --- !u!1 &5777450083639978148
 GameObject:
   m_ObjectHideFlags: 0

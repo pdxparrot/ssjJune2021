@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 using pdxpartyparrot.Core.Util;
 using pdxpartyparrot.Game.Level;
 using pdxpartyparrot.ssjjune2021.Items;
+using pdxpartyparrot.ssjjune2021.UI;
 using pdxpartyparrot.ssjjune2021.World;
 
 namespace pdxpartyparrot.ssjjune2021.Level
@@ -83,7 +84,7 @@ namespace pdxpartyparrot.ssjjune2021.Level
 
         protected override void GameStartClientEventHandler(object sender, EventArgs args)
         {
-            GameManager.Instance.Reset();
+            GameUIManager.Instance.GameGameUI.PlayerHUD.Reset();
 
             base.GameStartClientEventHandler(sender, args);
         }

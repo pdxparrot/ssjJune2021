@@ -143,7 +143,7 @@ MonoBehaviour:
   _exitEffect: {fileID: 1921276490146804942}
   _menuPrefab: {fileID: 0}
   _overlayPrefab: {fileID: 5794495685535547773, guid: 531344e95337b7f4481ac3630f018723, type: 3}
-  _automaticOverlayTransition: 1
+  _automaticOverlayTransition: 0
   _completeWaitTimeSeconds: 5
   _completeTimer:
     id: 0

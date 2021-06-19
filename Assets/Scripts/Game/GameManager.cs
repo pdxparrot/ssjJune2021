@@ -152,6 +152,7 @@ namespace pdxpartyparrot.Game
 
         public virtual void Initialize()
         {
+            // NOTE: don't call Reset() here
             IsGameOver = false;
             IsGameReady = false;
             TransitionToHighScores = false;
@@ -169,6 +170,13 @@ namespace pdxpartyparrot.Game
             if(Core.Network.NetworkManager.Instance.IsServerActive() && null != GameStateManager.Instance.PlayerManager) {
                 GameStateManager.Instance.PlayerManager.DestroyPlayers();
             }
+        }
+
+        public virtual void Reset()
+        {
+            IsGameOver = false;
+            IsGameReady = false;
+            TransitionToHighScores = false;
         }
 
         #region Level Helper

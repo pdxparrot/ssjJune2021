@@ -10,7 +10,7 @@ namespace pdxpartyparrot.ssjjune2021.Menu
         {
             base.OnStart();
 
-            GameStateManager.Instance.TransitionStateAsync(GameManager.Instance.GameGameData.LevelSelectStatePrefab);
+            GameManager.Instance.TransitionToLevelSelect();
         }
 
         #endregion

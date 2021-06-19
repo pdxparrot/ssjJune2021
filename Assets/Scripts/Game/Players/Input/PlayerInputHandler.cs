@@ -64,8 +64,8 @@ namespace pdxpartyparrot.Game.Players.Input
         && Player.IsLocalActor
         && GameStateManager.Instance.GameManager.IsGameReady
         && !GameStateManager.Instance.GameManager.IsGameOver
-        && !CinematicsManager.Instance.RunningCinematic
-        && !DialogueManager.Instance.ShowingDialogue;
+        && !CinematicsManager.Instance.IsRunningCinematic
+        && !DialogueManager.Instance.IsShowingDialogue;
 
         [SerializeField]
         [ReadOnly]

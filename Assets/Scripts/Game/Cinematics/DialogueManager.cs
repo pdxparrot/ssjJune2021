@@ -11,14 +11,20 @@ namespace pdxpartyparrot.Game.Cinematics
     public sealed class DialogueManager : SingletonBehavior<DialogueManager>
     {
         [SerializeField]
+        [Tooltip("How long should new dialogues be open before listening for input")]
+        private float _inputDelay = 0.5f;
+
+        public float InputDelay => _inputDelay;
+
+        [SerializeField]
         [ReadOnly]
         private Dialogue _currentDialogue;
-
-        public bool ShowingDialogue => null != _currentDialogue;
 
         private Action _onComplete;
 
         private Action _onCancel;
+
+        public bool IsShowingDialogue => null != _currentDialogue;
 
         #region Unity Lifecycle
 
@@ -42,11 +48,13 @@ namespace pdxpartyparrot.Game.Cinematics
             _currentDialogue = GameStateManager.Instance.GameUIManager.InstantiateUIPrefab(dialoguePrefab);
             _onComplete = onComplete;
             _onCancel = onCancel;
+
+            Debug.Log($"Showing dialogue {_currentDialogue.name}");
         }
 
         public void AdvanceDialogue()
         {
-            if(!ShowingDialogue) {
+            if(!IsShowingDialogue) {
                 return;
             }
 
@@ -60,7 +68,7 @@ namespace pdxpartyparrot.Game.Cinematics
 
         public void CancelDialogue()
         {
-            if(!ShowingDialogue) {
+            if(!IsShowingDialogue) {
                 return;
             }
 
@@ -77,7 +85,7 @@ namespace pdxpartyparrot.Game.Cinematics
         {
             DebugMenuNode debugMenuNode = DebugMenuManager.Instance.AddNode(() => "Core.DialogueManager");
             debugMenuNode.RenderContentsAction = () => {
-                GUILayout.Label(ShowingDialogue ? $"Showing dialogue ${_currentDialogue.name}" : "Not showing dialogue");
+                GUILayout.Label(IsShowingDialogue ? $"Showing dialogue ${_currentDialogue.name}" : "Not showing dialogue");
             };
         }
     }

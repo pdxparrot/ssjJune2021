@@ -5,7 +5,9 @@ using UnityEngine.InputSystem;
 
 using pdxpartyparrot.Core.Effects;
 using pdxpartyparrot.Core.Input;
+using pdxpartyparrot.Core.Time;
 using pdxpartyparrot.Core.UI;
+using pdxpartyparrot.Core.Util;
 
 namespace pdxpartyparrot.Game.Cinematics
 {
@@ -30,9 +32,26 @@ namespace pdxpartyparrot.Game.Cinematics
         [CanBeNull]
         private EffectTrigger _disableEffect;
 
+        [SerializeField]
+        [ReadOnly]
+        private ITimer _showTimer;
+
         #endregion
 
         #region Unity Lifecycle
+
+        private void Awake()
+        {
+            _showTimer = TimeManager.Instance.AddTimer();
+        }
+
+        private void OnDestroy()
+        {
+            if(TimeManager.HasInstance) {
+                TimeManager.Instance.RemoveTimer(_showTimer);
+                _showTimer = null;
+            }
+        }
 
         private void OnEnable()
         {
@@ -42,6 +61,8 @@ namespace pdxpartyparrot.Game.Cinematics
             if(null != _enableEffect) {
                 _enableEffect.Trigger();
             }
+
+            _showTimer.Start(DialogueManager.Instance.InputDelay);
         }
 
         private void OnDisable()
@@ -52,7 +73,7 @@ namespace pdxpartyparrot.Game.Cinematics
 
             if(InputManager.HasInstance) {
                 InputManager.Instance.EventSystem.UIModule.submit.action.performed -= OnSubmit;
-                InputManager.Instance.EventSystem.UIModule.cancel.action.performed += OnCancel;
+                InputManager.Instance.EventSystem.UIModule.cancel.action.performed -= OnCancel;
             }
         }
 
@@ -62,12 +83,20 @@ namespace pdxpartyparrot.Game.Cinematics
 
         private void OnSubmit(InputAction.CallbackContext context)
         {
+            if(_showTimer.IsRunning) {
+                return;
+            }
+
             DialogueManager.Instance.AdvanceDialogue();
         }
 
         private void OnCancel(InputAction.CallbackContext context)
         {
             if(!_allowCancel) {
+                return;
+            }
+
+            if(_showTimer.IsRunning) {
                 return;
             }
 

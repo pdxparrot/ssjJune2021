@@ -15,7 +15,7 @@ namespace pdxpartyparrot.Game.Cinematics
 
         private readonly Dictionary<string, Cinematic> _cinematicsPrefabs = new Dictionary<string, Cinematic>();
 
-        public bool RunningCinematic => false;
+        public bool IsRunningCinematic => false;
 
         #region Unity Lifecycle
 

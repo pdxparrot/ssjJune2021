@@ -8,5 +8,9 @@ namespace pdxpartyparrot.ssjjune2021.Data.Players
     [Serializable]
     public sealed class PlayerData : Game.Data.Players.PlayerData
     {
+        [SerializeField]
+        private float _worldRespawnOffset;
+
+        public float WorldRespawnOffset => _worldRespawnOffset;
     }
 }

@@ -111,7 +111,7 @@ namespace pdxpartyparrot.ssjjune2021.Players
 
         public void OnWorldBoundaryCollisionExit(WorldBoundary boundary)
         {
-            PlayerManager.Instance.RespawnPlayerPosition(this, GamePlayerBehavior.GroundCheckBehaviorComponent.LastGroundedPosition);
+            PlayerManager.Instance.RespawnPlayerPosition(this, GamePlayerBehavior.GroundCheckBehaviorComponent.LastGroundedPosition + Vector3.up * PlayerManager.Instance.GamePlayerData.WorldRespawnOffset);
         }
 
         #endregion

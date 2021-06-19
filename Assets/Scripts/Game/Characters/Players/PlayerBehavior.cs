@@ -152,7 +152,7 @@ namespace pdxpartyparrot.Game.Characters.Players
 
             if(null != Animator) {
                 Animator.SetFloat(CharacterBehaviorData.MoveXAxisParam, CanMove ? Mathf.Abs(MoveDirection.x) : 0.0f);
-                Animator.SetFloat(CharacterBehaviorData.MoveZAxisParam, CanMove ? Mathf.Abs(MoveDirection.y) : 0.0f);
+                Animator.SetFloat(CharacterBehaviorData.MoveZAxisParam, CanMove ? Mathf.Abs(MoveDirection.z) : 0.0f);
             }
 
             base.AnimationUpdate(dt);

@@ -1,5 +1,6 @@
 using System;
 
+using pdxpartyparrot.Core.Effects;
 using pdxpartyparrot.Core.World;
 using pdxpartyparrot.Game.Characters.Players;
 using pdxpartyparrot.Game.World;
@@ -15,6 +16,13 @@ namespace pdxpartyparrot.ssjjune2021.Players
         public PlayerBehavior GamePlayerBehavior => (PlayerBehavior)PlayerBehavior;
 
         private GameViewer PlayerGameViewer => (GameViewer)Viewer;
+
+        #region Effects
+
+        [SerializeField]
+        private EffectTrigger _fallOutEffect;
+
+        #endregion
 
         #region Unity Lifecycle
 
@@ -74,14 +82,36 @@ namespace pdxpartyparrot.ssjjune2021.Players
 
         #endregion
 
+        #region Event Handlers
+
+        public void OnPlatformEnter(Transform parent)
+        {
+            transform.SetParent(parent);
+
+            GamePlayerBehavior.TailorBehavior.OnPlatformEnter();
+        }
+
+        public void OnPlatformExit()
+        {
+            PlayerManager.Instance.ReclaimPlayer(this);
+
+            GamePlayerBehavior.TailorBehavior.OnPlatformExit();
+        }
+
+        #endregion
+
         #region IWorldBoundaryCollisionListener
 
         public void OnWorldBoundaryCollisionEnter(WorldBoundary boundary)
         {
+            //_fallOutEffect.Trigger();
         }
 
         public void OnWorldBoundaryCollisionExit(WorldBoundary boundary)
         {
+            /*if(!PlayerManager.Instance.RespawnPlayerNearest(this, PlayerManager.Instance.GamePlayerData.RespawnTag)) {
+                PlayerManager.Instance.RespawnPlayerNearest(this);
+            }*/
         }
 
         #endregion

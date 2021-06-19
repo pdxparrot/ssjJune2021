@@ -18,6 +18,10 @@ namespace pdxpartyparrot.ssjjune2021.Players
         [ReadOnly]
         private /*readonly*/ Dictionary<MemoryFragmentType, int> _fragments = new Dictionary<MemoryFragmentType, int>();
 
+        [SerializeField]
+        [ReadOnly]
+        private bool _onPlatform;
+
         private Interactables3D _interactables;
 
         #region Unity Lifecycle
@@ -105,5 +109,19 @@ namespace pdxpartyparrot.ssjjune2021.Players
 
             return count;
         }
+
+        #region Event Handlers
+
+        public void OnPlatformEnter()
+        {
+            _onPlatform = true;
+        }
+
+        public void OnPlatformExit()
+        {
+            _onPlatform = false;
+        }
+
+        #endregion
     }
 }

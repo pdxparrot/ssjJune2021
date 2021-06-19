@@ -26,6 +26,11 @@ namespace pdxpartyparrot.Game.World
         [ReadOnly]
         private ITimer _cooldown;
 
+        [SerializeField]
+        private Transform _actorContainer;
+
+        protected Transform ActorContainer => _actorContainer;
+
         #region Unity Lifecycle
 
         protected virtual void Awake()

@@ -86,9 +86,7 @@ namespace pdxpartyparrot.ssjjune2021.World
             IsEnabled = true;
             gameObject.SetActive(true);
 
-            DialogueManager.Instance.ShowDialogue(_enabledDialoguePrefab, () => {
-                GameManager.Instance.BaseLevel.Exit();
-            });
+            DialogueManager.Instance.ShowDialogue(_enabledDialoguePrefab);
         }
 
         #endregion

@@ -94,7 +94,7 @@ namespace pdxpartyparrot.Game.Characters.Players
             LookRotation = Quaternion.Euler(rotation);
 
             if(null != LookTarget) {
-                LookTarget.rotation = LookRotation;
+                LookTarget.localRotation = LookRotation;
             }
 
             Owner.IsMoving = !Mathf.Approximately(MoveDirection.sqrMagnitude, 0.0f);

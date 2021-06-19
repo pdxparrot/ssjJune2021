@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef4e613884ebba94c98d57ddf2eed6b5, type: 3}
   m_Name: JumpBehaviorComponentData
   m_EditorClassIdentifier: 
-  _jumpHeight: 7
+  _jumpHeight: 3.5

@@ -239,6 +239,7 @@ MonoBehaviour:
   _manualAnimator: {fileID: 0}
   _networkPlayer: {fileID: 1165146076590566434}
   _inputHandler: {fileID: 196290195439068041}
+  _fallOutEffect: {fileID: 0}
 --- !u!1 &1391432127846025747
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,6 +314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ab8860168eb30142ad3cb4fd878cfc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _onPlatform: 0
 --- !u!114 &519844597161724268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,7 +330,7 @@ MonoBehaviour:
   _owner: {fileID: 0}
   _behaviorData: {fileID: 0}
   _spriteAnimationHelper: {fileID: 0}
-  _animator: {fileID: 0}
+  _animator: {fileID: 741186652937381227}
   _pauseAnimationOnPause: 1
   _spawnEffect: {fileID: 0}
   _respawnEffect: {fileID: 0}
@@ -364,6 +366,7 @@ MonoBehaviour:
   _groundCheckNormal: {x: 0, y: 0, z: 0}
   _groundCheckMinDistance: 0
   _groundSlope: 0
+  _lastGroundedPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &5549860137850499660
 MonoBehaviour:
   m_ObjectHideFlags: 0

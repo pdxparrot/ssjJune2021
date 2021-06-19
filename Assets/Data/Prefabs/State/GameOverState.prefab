@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7758298098629688514}
   - component: {fileID: 1921276490146804942}
-  - component: {fileID: 330405702918253751}
   m_Layer: 0
   m_Name: Exit Effect
   m_TagString: Untagged
@@ -45,24 +44,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _triggerOnComplete: []
-  _components:
-  - {fileID: 330405702918253751}
+  _components: []
   _isRunning: 0
   _complete: 0
---- !u!114 &330405702918253751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 730212505839017989}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05707779bd78cea4e9b2846fe7c74a67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _uiObjectName: game_over
-  _show: 0
 --- !u!1 &3076578844944399270
 GameObject:
   m_ObjectHideFlags: 0
@@ -73,7 +57,6 @@ GameObject:
   m_Component:
   - component: {fileID: 262158734589923802}
   - component: {fileID: 9189818167935380298}
-  - component: {fileID: 2089746126555985325}
   m_Layer: 0
   m_Name: Enter Effect
   m_TagString: Untagged
@@ -108,24 +91,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _triggerOnComplete: []
-  _components:
-  - {fileID: 2089746126555985325}
+  _components: []
   _isRunning: 0
   _complete: 0
---- !u!114 &2089746126555985325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3076578844944399270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05707779bd78cea4e9b2846fe7c74a67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _uiObjectName: game_over
-  _show: 1
 --- !u!1 &8329383119734305407
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,6 +142,8 @@ MonoBehaviour:
   _enterEffect: {fileID: 9189818167935380298}
   _exitEffect: {fileID: 1921276490146804942}
   _menuPrefab: {fileID: 0}
+  _overlayPrefab: {fileID: 5794495685535547773, guid: 531344e95337b7f4481ac3630f018723, type: 3}
+  _automaticOverlayTransition: 1
   _completeWaitTimeSeconds: 5
   _completeTimer:
     id: 0

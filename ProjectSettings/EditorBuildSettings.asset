@@ -23,5 +23,17 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/test.unity
     guid: 484c79b63c94421459526ed1ad10365e
+  - enabled: 1
+    path: Assets/Scenes/Level_LakeCabin.unity
+    guid: 4ee8f93e40cafa6409fccb4f2627a891
+  - enabled: 1
+    path: Assets/Scenes/Level_SewingRoom.unity
+    guid: 2a2f5a1e40ff96b48afa3614ab6bbbe6
+  - enabled: 1
+    path: Assets/Scenes/Level_TheTheatre.unity
+    guid: f1f7855d81b60f94fb1542198d883847
+  - enabled: 1
+    path: Assets/Scenes/Level_SkateRink.unity
+    guid: f72f340b7412ce14ba7553c4884f5f2c
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 057ee37870e50a449b8c2d1e26ac3596, type: 2}

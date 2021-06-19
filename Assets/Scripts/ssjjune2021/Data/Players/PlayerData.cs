@@ -9,8 +9,8 @@ namespace pdxpartyparrot.ssjjune2021.Data.Players
     public sealed class PlayerData : Game.Data.Players.PlayerData
     {
         [SerializeField]
-        private float _worldRespawnOffset;
+        private string _respawnTag = "PlayerRespawn";
 
-        public float WorldRespawnOffset => _worldRespawnOffset;
+        public string RespawnTag => _respawnTag;
     }
 }

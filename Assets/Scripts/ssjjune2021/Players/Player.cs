@@ -104,14 +104,14 @@ namespace pdxpartyparrot.ssjjune2021.Players
 
         public void OnWorldBoundaryCollisionEnter(WorldBoundary boundary)
         {
+            Debug.Log("Fell out of the world!");
+
             //_fallOutEffect.Trigger();
         }
 
         public void OnWorldBoundaryCollisionExit(WorldBoundary boundary)
         {
-            /*if(!PlayerManager.Instance.RespawnPlayerNearest(this, PlayerManager.Instance.GamePlayerData.RespawnTag)) {
-                PlayerManager.Instance.RespawnPlayerNearest(this);
-            }*/
+            PlayerManager.Instance.RespawnPlayerPosition(this, GamePlayerBehavior.GroundCheckBehaviorComponent.LastGroundedPosition);
         }
 
         #endregion

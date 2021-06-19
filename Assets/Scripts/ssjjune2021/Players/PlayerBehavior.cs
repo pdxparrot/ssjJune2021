@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 
 using pdxpartyparrot.Core.Data.Actors.Components;
+using pdxpartyparrot.Game.Characters.BehaviorComponents;
 using pdxpartyparrot.ssjjune2021.Data.Players;
 
 namespace pdxpartyparrot.ssjjune2021.Players
@@ -18,6 +19,10 @@ namespace pdxpartyparrot.ssjjune2021.Players
 
         public TailorBehavior TailorBehavior { get; private set; }
 
+        private GroundCheckBehaviorComponent _groundCheckBehaviorComponent;
+
+        public GroundCheckBehaviorComponent GroundCheckBehaviorComponent => _groundCheckBehaviorComponent;
+
         public override void Initialize(ActorBehaviorComponentData behaviorData)
         {
             Assert.IsTrue(Owner is Player);
@@ -26,6 +31,8 @@ namespace pdxpartyparrot.ssjjune2021.Players
             base.Initialize(behaviorData);
 
             TailorBehavior = GetComponent<TailorBehavior>();
+
+            _groundCheckBehaviorComponent = GetBehaviorComponent<GroundCheckBehaviorComponent>();
         }
     }
 }

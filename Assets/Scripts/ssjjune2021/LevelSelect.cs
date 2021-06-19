@@ -8,7 +8,8 @@ using pdxpartyparrot.Game.State;
 
 namespace pdxpartyparrot.ssjjune2021
 {
-    // TODO:: can this be core?
+    // TODO:: can this be core? (also this belongs in UI)
+    [RequireComponent(typeof(UIObject))]
     public sealed class LevelSelect : MonoBehaviour
     {
         [Serializable]
@@ -48,8 +49,6 @@ namespace pdxpartyparrot.ssjjune2021
 
             if(completed) {
                 GameManager.Instance.GameOver();
-
-                // TODO: hide the UI
             }
         }
 

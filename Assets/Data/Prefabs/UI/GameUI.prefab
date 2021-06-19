@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canvas: {fileID: 6023273512954906809}
   _playerHUD: {fileID: 6815843910808687109}
+  _gameOver: {fileID: 0}
 --- !u!1 &1718776314211872929
 GameObject:
   m_ObjectHideFlags: 0

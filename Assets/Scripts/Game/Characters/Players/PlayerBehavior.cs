@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 
 using pdxpartyparrot.Core.Data.Actors.Components;
 using pdxpartyparrot.Core.Util;
+using pdxpartyparrot.Core.World;
 using pdxpartyparrot.Game.Data.Characters;
 
 using UnityEngine;
@@ -94,7 +95,7 @@ namespace pdxpartyparrot.Game.Characters.Players
             LookRotation = Quaternion.Euler(rotation);
 
             if(null != LookTarget) {
-                LookTarget.localRotation = LookRotation;
+                LookTarget.rotation = LookRotation;
             }
 
             Owner.IsMoving = !Mathf.Approximately(MoveDirection.sqrMagnitude, 0.0f);
@@ -183,6 +184,20 @@ namespace pdxpartyparrot.Game.Characters.Players
             }
 
             base.PhysicsUpdate(dt);
+        }
+
+        public override bool OnSpawn(SpawnPoint spawnpoint)
+        {
+            LookRotation = spawnpoint.transform.rotation;
+
+            return base.OnSpawn(spawnpoint);
+        }
+
+        public override bool OnReSpawn(SpawnPoint spawnpoint)
+        {
+            LookRotation = spawnpoint.transform.rotation;
+
+            return base.OnReSpawn(spawnpoint);
         }
     }
 }

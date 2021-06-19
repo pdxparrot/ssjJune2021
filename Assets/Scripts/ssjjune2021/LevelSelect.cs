@@ -3,6 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
+using pdxpartyparrot.Core.UI;
 using pdxpartyparrot.Game.State;
 
 namespace pdxpartyparrot.ssjjune2021
@@ -39,6 +40,9 @@ namespace pdxpartyparrot.ssjjune2021
                             state.OverrideCurrentScene(level.name);
                         });
                     });
+
+                    level.button.Select();
+                    level.button.Highlight();
                 }
             }
 

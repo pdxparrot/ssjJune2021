@@ -39,6 +39,8 @@ namespace pdxpartyparrot.ssjjune2021.UI
 
         private void OnCancel(InputAction.CallbackContext context)
         {
+            GameManager.Instance.Reset();
+
             GameStateManager.Instance.TransitionToInitialStateAsync();
         }
 

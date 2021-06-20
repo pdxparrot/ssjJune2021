@@ -3434,6 +3434,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelIntroEffect
       objectReference: {fileID: 0}
+    - target: {fileID: 6737304836046218137, guid: 7c09f743a1f3719498d3e706719cfea9, type: 3}
+      propertyPath: _music
+      value: 
+      objectReference: {fileID: 8300000, guid: 8d3a3e09603bb9f4f9c33ca883491511, type: 3}
     - target: {fileID: 8027174381749322175, guid: 7c09f743a1f3719498d3e706719cfea9, type: 3}
       propertyPath: m_RootOrder
       value: 0

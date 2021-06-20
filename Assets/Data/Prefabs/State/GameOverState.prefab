@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7758298098629688514}
   - component: {fileID: 1921276490146804942}
+  - component: {fileID: 5653118014052961148}
   m_Layer: 0
   m_Name: Exit Effect
   m_TagString: Untagged
@@ -44,9 +45,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _triggerOnComplete: []
-  _components: []
+  _components:
+  - {fileID: 5653118014052961148}
   _isRunning: 0
   _complete: 0
+--- !u!114 &5653118014052961148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730212505839017989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60e3480dd9a6b4542bbafaa2d6ce307f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3076578844944399270
 GameObject:
   m_ObjectHideFlags: 0

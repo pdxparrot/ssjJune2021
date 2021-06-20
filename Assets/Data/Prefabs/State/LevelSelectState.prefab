@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 946676008005690461}
   - component: {fileID: 12983981111958987}
   - component: {fileID: 5302583163093000687}
+  - component: {fileID: 9173225132818553463}
   m_Layer: 0
   m_Name: Enter Effect
   m_TagString: Untagged
@@ -47,6 +48,7 @@ MonoBehaviour:
   _triggerOnComplete: []
   _components:
   - {fileID: 5302583163093000687}
+  - {fileID: 9173225132818553463}
   _isRunning: 0
   _complete: 0
 --- !u!114 &5302583163093000687
@@ -63,6 +65,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uiObjectName: level_select
   _show: 1
+--- !u!114 &9173225132818553463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652916478987126342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fcdaf3b5b976814ea8ea89b0ddf03a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _music: {fileID: 8300000, guid: 5da1d20170e01314da1a6438466731a6, type: 3}
+  _transitionSeconds: 0
 --- !u!1 &5868604062020056003
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,6 +141,7 @@ GameObject:
   - component: {fileID: 6026255279676539926}
   - component: {fileID: 4525040971914024167}
   - component: {fileID: 2109841318063272290}
+  - component: {fileID: 4520338420736216655}
   m_Layer: 0
   m_Name: Exit Effect
   m_TagString: Untagged
@@ -161,6 +178,7 @@ MonoBehaviour:
   _triggerOnComplete: []
   _components:
   - {fileID: 2109841318063272290}
+  - {fileID: 4520338420736216655}
   _isRunning: 0
   _complete: 0
 --- !u!114 &2109841318063272290
@@ -177,3 +195,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uiObjectName: level_select
   _show: 0
+--- !u!114 &4520338420736216655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8983141860621440562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60e3480dd9a6b4542bbafaa2d6ce307f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

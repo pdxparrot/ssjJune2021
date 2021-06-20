@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5340436329960593518}
   - component: {fileID: 3494776106546776678}
+  - component: {fileID: 7685390975089660777}
   m_Layer: 0
   m_Name: Enter Effect
   m_TagString: Untagged
@@ -44,9 +45,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _triggerOnComplete: []
-  _components: []
+  _components:
+  - {fileID: 7685390975089660777}
   _isRunning: 0
   _complete: 0
+--- !u!114 &7685390975089660777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2302384046369668778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fcdaf3b5b976814ea8ea89b0ddf03a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _music: {fileID: 8300000, guid: 5da1d20170e01314da1a6438466731a6, type: 3}
+  _transitionSeconds: 0
 --- !u!1 &2723863328234519509
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,6 +73,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1176502298529181390}
   - component: {fileID: 2312940523689336803}
+  - component: {fileID: 6595289250699997153}
   m_Layer: 0
   m_Name: Exit Effect
   m_TagString: Untagged
@@ -91,9 +108,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _triggerOnComplete: []
-  _components: []
+  _components:
+  - {fileID: 6595289250699997153}
   _isRunning: 0
   _complete: 0
+--- !u!114 &6595289250699997153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2723863328234519509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60e3480dd9a6b4542bbafaa2d6ce307f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6823233403744219665
 GameObject:
   m_ObjectHideFlags: 0

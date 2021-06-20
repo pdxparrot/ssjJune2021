@@ -21,7 +21,7 @@ namespace pdxpartyparrot.ssjjune2021.Menu
         {
             base.OnEnable();
 
-            _invertYAxisToggle.isOn = PlayerManager.Instance.Players.ElementAt(0).PlayerInputHandler.InvertLookVertical;
+            _invertYAxisToggle.isOn = GameManager.Instance.Settings.InvertLookVertical;
         }
 
         #endregion
@@ -30,7 +30,7 @@ namespace pdxpartyparrot.ssjjune2021.Menu
 
         public void OnInvertYAxisToggle(bool state)
         {
-            PlayerManager.Instance.Players.ElementAt(0).PlayerInputHandler.InvertLookVertical = state;
+            GameManager.Instance.Settings.InvertLookVertical = state;
         }
 
         #endregion

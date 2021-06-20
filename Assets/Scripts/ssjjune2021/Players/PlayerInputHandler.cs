@@ -1,3 +1,5 @@
+using System;
+
 using pdxpartyparrot.Game.Characters.BehaviorComponents;
 using pdxpartyparrot.Game.Players.Input;
 using pdxpartyparrot.ssjjune2021.Data.Players;
@@ -20,9 +22,27 @@ namespace pdxpartyparrot.ssjjune2021.Players
 
             Assert.IsTrue(PlayerInputData is PlayerInputData);
             Assert.IsTrue(Player is Player);
+
+            GameManager.Instance.Settings.SettingsUpdatedEvent += SettingsUpdatedEventHandler;
+        }
+
+        protected override void OnDestroy()
+        {
+            if(GameManager.HasInstance) {
+                GameManager.Instance.Settings.SettingsUpdatedEvent -= SettingsUpdatedEventHandler;
+            }
+
+            base.OnDestroy();
         }
 
         #endregion
+
+        public override void Initialize(short playerControllerId)
+        {
+            base.Initialize(playerControllerId);
+
+            InvertLookVertical = GameManager.Instance.Settings.InvertLookVertical;
+        }
 
         #region Actions
 
@@ -54,6 +74,15 @@ namespace pdxpartyparrot.ssjjune2021.Players
             if(context.performed) {
                 GamePlayer.GamePlayerBehavior.TailorBehavior.Interact();
             }
+        }
+
+        #endregion
+
+        #region Event Handlers
+
+        private void SettingsUpdatedEventHandler(object sender, EventArgs args)
+        {
+            InvertLookVertical = GameManager.Instance.Settings.InvertLookVertical;
         }
 
         #endregion

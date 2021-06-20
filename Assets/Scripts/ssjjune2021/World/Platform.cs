@@ -29,6 +29,8 @@ namespace pdxpartyparrot.ssjjune2021.World
 
         protected override void OnEnterPlatform(GameObject gameObject)
         {
+            base.OnEnterPlatform(gameObject);
+
             Player player = gameObject.GetComponentInParent<Player>();
             if(null != player) {
                 OnPlayerEnter(player);
@@ -38,6 +40,8 @@ namespace pdxpartyparrot.ssjjune2021.World
 
         protected override void OnExitPlatform(GameObject gameObject)
         {
+            base.OnExitPlatform(gameObject);
+
             Player player = gameObject.GetComponentInParent<Player>();
             if(null != player) {
                 OnPlayerExit(player);

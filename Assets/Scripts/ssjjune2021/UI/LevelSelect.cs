@@ -11,6 +11,7 @@ using pdxpartyparrot.Game.State;
 
 namespace pdxpartyparrot.ssjjune2021.UI
 {
+    // TODO: could this move down to the Game level?
     [RequireComponent(typeof(UIObject))]
     public sealed class LevelSelect : MonoBehaviour
     {

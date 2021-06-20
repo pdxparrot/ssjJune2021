@@ -7,6 +7,7 @@ using pdxpartyparrot.ssjjune2021.Players;
 
 namespace pdxpartyparrot.ssjjune2021.Menu
 {
+    // TODO: the invert option can probably move down to the Game level
     public sealed class SettingsMenu : Game.Menu.SettingsMenu
     {
         [Space(10)]

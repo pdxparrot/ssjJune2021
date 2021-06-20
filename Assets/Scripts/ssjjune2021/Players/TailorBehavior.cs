@@ -82,7 +82,7 @@ namespace pdxpartyparrot.ssjjune2021.Players
 
         private void CollectFragment(MemoryFragment fragment)
         {
-            if(!fragment.CanBeCollected) {
+            if(!fragment.CanCollect) {
                 return;
             }
 

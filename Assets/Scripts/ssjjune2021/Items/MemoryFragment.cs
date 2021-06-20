@@ -2,6 +2,7 @@ using System;
 
 using UnityEngine;
 
+using pdxpartyparrot.Core.Effects;
 using pdxpartyparrot.Core.Util;
 
 namespace pdxpartyparrot.ssjjune2021.Items
@@ -9,16 +10,26 @@ namespace pdxpartyparrot.ssjjune2021.Items
     [RequireComponent(typeof(Collider))]
     public sealed class MemoryFragment : MonoBehaviour
     {
-        public bool CanBeCollected => !_collected;
-
         [SerializeField]
-        [ReadOnly]
-        private bool _collected;
+        private GameObject _model;
 
         [SerializeField]
         private MemoryFragmentType _fragmentType = MemoryFragmentType.Working;
 
         public MemoryFragmentType FragmentType => _fragmentType;
+
+        [SerializeField]
+        [ReadOnly]
+        private bool _collected;
+
+        public bool CanCollect => !_collected;
+
+        #region Effects
+
+        [SerializeField]
+        private EffectTrigger _collectEffect;
+
+        #endregion
 
         #region Unity Lifecycle
 
@@ -46,14 +57,16 @@ namespace pdxpartyparrot.ssjjune2021.Items
         {
             _collected = false;
 
-            gameObject.SetActive(true);
+            _model.SetActive(true);
         }
 
         public void Collect()
         {
             _collected = true;
 
-            gameObject.SetActive(false);
+            _model.SetActive(false);
+
+            _collectEffect.Trigger();
         }
 
         #region Event Handlers

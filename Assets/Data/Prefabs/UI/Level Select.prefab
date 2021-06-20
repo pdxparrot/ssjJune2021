@@ -74,12 +74,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levels:
   - name: Level_LakeCabin
+    image: {fileID: 4676333101889996512}
     button: {fileID: 3433597819248449334}
   - name: Level_SkateRink
+    image: {fileID: 5362217127610227858}
     button: {fileID: 7968417413757181257}
   - name: Level_TheTheatre
+    image: {fileID: 3232587066066418851}
     button: {fileID: 723556417939658798}
   - name: Level_SewingRoom
+    image: {fileID: 3319085237687839772}
     button: {fileID: 604809083457277308}
   _introDialoguePrefab: {fileID: 7966502490219586054, guid: f0c33f67d7134f642adb922e496e04a2, type: 3}
   _introDelay: 0.5

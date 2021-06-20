@@ -21,7 +21,16 @@ namespace pdxpartyparrot.ssjjune2021.UI
             public string name;
 
             [SerializeField]
+            public Image image;
+
+            [SerializeField]
             public Button button;
+
+            [SerializeField]
+            public Sprite incomplete;
+
+            [SerializeField]
+            public Sprite complete;
         }
 
         [SerializeField]
@@ -49,9 +58,13 @@ namespace pdxpartyparrot.ssjjune2021.UI
             foreach(Level level in _levels) {
                 // hook up the level button onclicks
                 if(GameManager.Instance.IsLevelCompleted(level.name)) {
+                    level.image.sprite = level.complete;
                     level.button.interactable = false;
                 } else {
                     completed = false;
+
+                    level.image.sprite = level.incomplete;
+
                     level.button.onClick.AddListener(() => {
                         GameStateManager.Instance.StartLocal(GameManager.Instance.GameData.MainGameStatePrefab, state => {
                             state.OverrideCurrentScene(level.name);

@@ -8,6 +8,8 @@ using pdxpartyparrot.Game.State;
 
 namespace pdxpartyparrot.Game.Cinematics
 {
+    // TODO: if this could pre-allocate all of the dialogues we need
+    // rather than instantiating them, that would save a lot of trash
     public sealed class DialogueManager : SingletonBehavior<DialogueManager>
     {
         [SerializeField]

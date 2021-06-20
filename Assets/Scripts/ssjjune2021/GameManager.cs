@@ -20,6 +20,16 @@ namespace pdxpartyparrot.ssjjune2021
 
         public GameViewer Viewer { get; private set; }
 
+        [SerializeField]
+        [ReadOnly]
+        private bool _introShown;
+
+        public bool IntroShown
+        {
+            get => _introShown;
+            set => _introShown = value;
+        }
+
         //[SerializeReference]
         [ReadOnly]
         private /*readonly*/ HashSet<string> _completedLevels = new HashSet<string>();
@@ -38,8 +48,7 @@ namespace pdxpartyparrot.ssjjune2021
         {
             base.Reset();
 
-            Debug.LogError("reset");
-
+            IntroShown = false;
             _completedLevels.Clear();
         }
 

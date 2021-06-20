@@ -81,6 +81,8 @@ MonoBehaviour:
     button: {fileID: 723556417939658798}
   - name: Level_SewingRoom
     button: {fileID: 604809083457277308}
+  _introDialoguePrefab: {fileID: 7966502490219586054, guid: f0c33f67d7134f642adb922e496e04a2, type: 3}
+  _introDelay: 0.5
 --- !u!1 &1360786811294840611
 GameObject:
   m_ObjectHideFlags: 0

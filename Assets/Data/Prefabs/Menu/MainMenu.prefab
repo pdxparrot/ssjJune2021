@@ -1044,7 +1044,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _delay: 3
-  _scrollRate: 120
+  _scrollRate: 100
   _resetOnEnable: 1
   _step: 0
   _delayRemaining: 0

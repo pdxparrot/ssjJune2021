@@ -12,7 +12,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cfc7f5b5511f8946b55f09eef5b40ea, type: 3}
   m_Name: CreditsData
   m_EditorClassIdentifier: 
-  _preAmble: 
-  _credits: []
-  _postAmble: 
+  _preAmble: A PDX Party Game
+  _credits:
+  - _title: 3d Rigger & Animator
+    _allowInContributorString: 1
+    _contributors:
+    - Allyson Willsey
+  - _title: Concept Artist
+    _allowInContributorString: 1
+    _contributors:
+    - Corwyn Prichard
+  - _title: Illustrator
+    _allowInContributorString: 1
+    _contributors:
+    - Christa Paolucci
+  - _title: Composer
+    _allowInContributorString: 1
+    _contributors:
+    - Jesse Clark
+  - _title: Programmer
+    _allowInContributorString: 1
+    _contributors:
+    - Shane Lillie
+  - _title: Game Designer & 3D Artist
+    _allowInContributorString: 1
+    _contributors:
+    - Tien Tam
+  _postAmble: "Special Thanks to PIGSQUAD! \nFonts used from dafont.com:\n-Baby Soft
+    Stitches\n-Mix Stitch"
   _contributorString: A {credit} Game

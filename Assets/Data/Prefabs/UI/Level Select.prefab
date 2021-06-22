@@ -76,21 +76,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levels:
   - name: Level_LakeCabin
+    enabled: 0
     image: {fileID: 1923251457094308808}
     button: {fileID: 3433597819248449334}
     incomplete: {fileID: 21300000, guid: ea1ae595a65ee3b429f69f28dad4bc79, type: 3}
     complete: {fileID: 21300000, guid: 82aabd86695da6f4d8ab35de8cab634a, type: 3}
   - name: Level_SkateRink
+    enabled: 1
     image: {fileID: 6594348955290524087}
     button: {fileID: 7968417413757181257}
     incomplete: {fileID: 21300000, guid: 39eb51f13e1066042aa947b4e6e6d295, type: 3}
     complete: {fileID: 21300000, guid: 79abf91390575274cbafd2746e7fa3bd, type: 3}
   - name: Level_TheTheatre
+    enabled: 0
     image: {fileID: 4547723846751919312}
     button: {fileID: 723556417939658798}
     incomplete: {fileID: 21300000, guid: 3e9b8030893e96a46b79475b68ed2673, type: 3}
     complete: {fileID: 21300000, guid: 4d18232a390849446b3d8c94dfaf3aac, type: 3}
   - name: Level_SewingRoom
+    enabled: 0
     image: {fileID: 4427850615584016770}
     button: {fileID: 604809083457277308}
     incomplete: {fileID: 21300000, guid: c8a7a37a12dfbef41a70afb4da296bdf, type: 3}
@@ -429,7 +433,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25.3
+  m_fontSize: 51
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -837,15 +841,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3241704839330380195, guid: b4e42036d528f54488b4ba3dbe6bd37e, type: 3}
       propertyPath: m_Colors.m_DisabledColor.b
-      value: 1
+      value: 0.39215687
       objectReference: {fileID: 0}
     - target: {fileID: 3241704839330380195, guid: b4e42036d528f54488b4ba3dbe6bd37e, type: 3}
       propertyPath: m_Colors.m_DisabledColor.g
-      value: 1
+      value: 0.39215687
       objectReference: {fileID: 0}
     - target: {fileID: 3241704839330380195, guid: b4e42036d528f54488b4ba3dbe6bd37e, type: 3}
       propertyPath: m_Colors.m_DisabledColor.r
-      value: 1
+      value: 0.39215687
       objectReference: {fileID: 0}
     - target: {fileID: 3241704839330380195, guid: b4e42036d528f54488b4ba3dbe6bd37e, type: 3}
       propertyPath: m_Colors.m_SelectedColor.b
@@ -1089,15 +1093,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3241704839330380195, guid: b4e42036d528f54488b4ba3dbe6bd37e, type: 3}
       propertyPath: m_Colors.m_DisabledColor.b
-      value: 1
+      value: 0.39215687
       objectReference: {fileID: 0}
     - target: {fileID: 3241704839330380195, guid: b4e42036d528f54488b4ba3dbe6bd37e, type: 3}
       propertyPath: m_Colors.m_DisabledColor.g
-      value: 1
+      value: 0.39215687
       objectReference: {fileID: 0}
     - target: {fileID: 3241704839330380195, guid: b4e42036d528f54488b4ba3dbe6bd37e, type: 3}
       propertyPath: m_Colors.m_DisabledColor.r
-      value: 1
+      value: 0.39215687
       objectReference: {fileID: 0}
     - target: {fileID: 3241704839330380195, guid: b4e42036d528f54488b4ba3dbe6bd37e, type: 3}
       propertyPath: m_Colors.m_SelectedColor.b
@@ -1341,15 +1345,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3241704839330380195, guid: b4e42036d528f54488b4ba3dbe6bd37e, type: 3}
       propertyPath: m_Colors.m_DisabledColor.b
-      value: 1
+      value: 0.39215687
       objectReference: {fileID: 0}
     - target: {fileID: 3241704839330380195, guid: b4e42036d528f54488b4ba3dbe6bd37e, type: 3}
       propertyPath: m_Colors.m_DisabledColor.g
-      value: 1
+      value: 0.39215687
       objectReference: {fileID: 0}
     - target: {fileID: 3241704839330380195, guid: b4e42036d528f54488b4ba3dbe6bd37e, type: 3}
       propertyPath: m_Colors.m_DisabledColor.r
-      value: 1
+      value: 0.39215687
       objectReference: {fileID: 0}
     - target: {fileID: 3241704839330380195, guid: b4e42036d528f54488b4ba3dbe6bd37e, type: 3}
       propertyPath: m_Colors.m_SelectedColor.b
@@ -1593,15 +1597,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3241704839330380195, guid: b4e42036d528f54488b4ba3dbe6bd37e, type: 3}
       propertyPath: m_Colors.m_DisabledColor.b
-      value: 1
+      value: 0.39215687
       objectReference: {fileID: 0}
     - target: {fileID: 3241704839330380195, guid: b4e42036d528f54488b4ba3dbe6bd37e, type: 3}
       propertyPath: m_Colors.m_DisabledColor.g
-      value: 1
+      value: 0.39215687
       objectReference: {fileID: 0}
     - target: {fileID: 3241704839330380195, guid: b4e42036d528f54488b4ba3dbe6bd37e, type: 3}
       propertyPath: m_Colors.m_DisabledColor.r
-      value: 1
+      value: 0.39215687
       objectReference: {fileID: 0}
     - target: {fileID: 3241704839330380195, guid: b4e42036d528f54488b4ba3dbe6bd37e, type: 3}
       propertyPath: m_Colors.m_SelectedColor.b

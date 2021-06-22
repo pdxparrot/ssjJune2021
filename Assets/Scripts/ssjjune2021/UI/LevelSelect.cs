@@ -3,6 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
+using pdxpartyparrot.Core.Input;
 using pdxpartyparrot.Core.Time;
 using pdxpartyparrot.Core.UI;
 using pdxpartyparrot.Core.Util;
@@ -20,6 +21,9 @@ namespace pdxpartyparrot.ssjjune2021.UI
         {
             [SerializeField]
             public string name;
+
+            [SerializeField]
+            public bool enabled = true;
 
             [SerializeField]
             public Image image;
@@ -60,6 +64,10 @@ namespace pdxpartyparrot.ssjjune2021.UI
                 // hook up the level button onclicks
                 if(GameManager.Instance.IsLevelCompleted(level.name)) {
                     level.image.overrideSprite = level.complete;
+                    level.button.interactable = false;
+                } else if(!level.enabled) {
+                    level.image.overrideSprite = level.incomplete;
+
                     level.button.interactable = false;
                 } else {
                     completed = false;
@@ -117,7 +125,7 @@ namespace pdxpartyparrot.ssjjune2021.UI
         {
             // enable the buttons that should be enabled
             foreach(Level level in _levels) {
-                if(!GameManager.Instance.IsLevelCompleted(level.name)) {
+                if(!GameManager.Instance.IsLevelCompleted(level.name) && level.enabled) {
                     EnableButtonInteract(level.button);
                 }
             }

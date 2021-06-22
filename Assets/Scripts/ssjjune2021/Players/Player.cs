@@ -106,7 +106,7 @@ namespace pdxpartyparrot.ssjjune2021.Players
         {
             Debug.Log("Fell out of the world!");
 
-            //_fallOutEffect.Trigger();
+            _fallOutEffect.Trigger();
         }
 
         public void OnWorldBoundaryCollisionExit(WorldBoundary boundary)

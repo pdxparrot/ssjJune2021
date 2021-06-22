@@ -31,6 +31,7 @@ namespace pdxpartyparrot.ssjjune2021.Players
             base.Initialize(behaviorData);
 
             TailorBehavior = GetComponent<TailorBehavior>();
+            TailorBehavior.Initialize();
 
             _groundCheckBehaviorComponent = GetBehaviorComponent<GroundCheckBehaviorComponent>();
         }

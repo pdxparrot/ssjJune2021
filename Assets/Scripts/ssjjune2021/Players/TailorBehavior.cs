@@ -1,8 +1,11 @@
+using System;
 using System.Collections.Generic;
 
 using UnityEngine;
 
 using pdxpartyparrot.Core.Collections;
+using pdxpartyparrot.Core.Effects;
+using pdxpartyparrot.Core.Effects.EffectTriggerComponents;
 using pdxpartyparrot.Core.Util;
 using pdxpartyparrot.Game.Interactables;
 using pdxpartyparrot.ssjjune2021.Items;
@@ -14,6 +17,11 @@ namespace pdxpartyparrot.ssjjune2021.Players
     [RequireComponent(typeof(Interactables3D))]
     public sealed class TailorBehavior : MonoBehaviour
     {
+        [SerializeField]
+        private Player _owner;
+
+        public Player Owner => _owner;
+
         [SerializeReference]
         [ReadOnly]
         private /*readonly*/ Dictionary<MemoryFragmentType, int> _fragments = new Dictionary<MemoryFragmentType, int>();
@@ -24,11 +32,33 @@ namespace pdxpartyparrot.ssjjune2021.Players
 
         private Interactables3D _interactables;
 
+        #region Effects
+
+        [SerializeField]
+        private EffectTrigger _levelEnteredEffect;
+
+        [SerializeField]
+        private EffectTrigger _collectEffect;
+
+        [SerializeField]
+        private RumbleEffectTriggerComponent[] _rumbleEffects;
+
+        #endregion
+
         #region Unity Lifecycle
 
         private void Awake()
         {
             _interactables = GetComponent<Interactables3D>();
+
+            GameManager.Instance.LevelEnterEvent += LevelEnterEventHandler;
+        }
+
+        private void OnDestroy()
+        {
+            if(GameManager.HasInstance) {
+                GameManager.Instance.LevelEnterEvent -= LevelEnterEventHandler;
+            }
         }
 
         private void OnTriggerEnter(Collider other)
@@ -41,6 +71,13 @@ namespace pdxpartyparrot.ssjjune2021.Players
         }
 
         #endregion
+
+        public void Initialize()
+        {
+            foreach(RumbleEffectTriggerComponent rumble in _rumbleEffects) {
+                rumble.PlayerInput = Owner.PlayerInputHandler.InputHelper;
+            }
+        }
 
         public void Reset()
         {
@@ -93,6 +130,8 @@ namespace pdxpartyparrot.ssjjune2021.Players
             _fragments[fragment.FragmentType] = count + 1;
 
             GameUIManager.Instance.GameGameUI.PlayerHUD.UpdateMemoryFragments(fragment.FragmentType, _fragments[fragment.FragmentType]);
+
+            _collectEffect.Trigger();
         }
 
         public int AssembleFragments(MemoryFragmentType fragmentType, int max)
@@ -111,6 +150,11 @@ namespace pdxpartyparrot.ssjjune2021.Players
         }
 
         #region Event Handlers
+
+        private void LevelEnterEventHandler(object sender, EventArgs args)
+        {
+            _levelEnteredEffect.Trigger();
+        }
 
         public void OnPlatformEnter()
         {

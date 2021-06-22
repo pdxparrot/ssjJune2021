@@ -58,6 +58,8 @@ namespace pdxpartyparrot.Game
 
         void GameUnReady();
 
+        void LevelEntered();
+
         void LevelTransitioning();
 
         void GameOver();
@@ -76,6 +78,7 @@ namespace pdxpartyparrot.Game
         public event EventHandler<EventArgs> GameUnReadyEvent;
         public event EventHandler<EventArgs> GameOverEvent;
 
+        public event EventHandler<EventArgs> LevelEnterEvent;
         public event EventHandler<EventArgs> LevelTransitioningEvent;
 
         #endregion
@@ -242,6 +245,11 @@ namespace pdxpartyparrot.Game
             IsGameReady = false;
 
             GameUnReadyEvent?.Invoke(this, EventArgs.Empty);
+        }
+
+        public virtual void LevelEntered()
+        {
+            LevelEnterEvent?.Invoke(this, null);
         }
 
         public virtual void LevelTransitioning()

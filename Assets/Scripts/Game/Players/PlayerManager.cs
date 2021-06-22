@@ -174,7 +174,7 @@ namespace pdxpartyparrot.Game.Players
         {
             Assert.IsTrue(NetworkManager.Instance.IsServerActive());
 
-            Debug.Log($"Respawning player {player.Id} at spawn point {spawnPoint.name}");
+            Debug.Log($"Respawning player {player.Id} at spawn point {spawnPoint?.name ?? "Invalid spawnpoint"}");
 
             if(null == spawnPoint) {
                 Debug.LogError("Failed to get player spawnpoint!");

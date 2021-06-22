@@ -10,6 +10,9 @@ namespace pdxpartyparrot.Game.Cinematics
 {
     // TODO: if this could pre-allocate all of the dialogues we need
     // rather than instantiating them, that would save a lot of trash
+    // OR another option is a small set of dialogue prefabs
+    // and more data that can be swapped in and out as needed
+    // (ideally allowing for images and rich text)
     public sealed class DialogueManager : SingletonBehavior<DialogueManager>
     {
         [SerializeField]

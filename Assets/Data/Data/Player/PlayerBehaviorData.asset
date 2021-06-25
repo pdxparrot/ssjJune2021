@@ -29,8 +29,8 @@ MonoBehaviour:
   _actionBufferSize: 1
   _actionBufferTimeoutMs: 500
   _allowLookHorizontal: 1
-  _horizontalLookSpeed: 75
+  _horizontalLookSpeed: 60
   _allowLookVertical: 1
-  _verticalLookSpeed: 75
+  _verticalLookSpeed: 60
   _maxVerticalRotation: 45
   _alignMovementWithViewer: 1

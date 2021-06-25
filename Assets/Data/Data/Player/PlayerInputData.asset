@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: PlayerInputData
   m_EditorClassIdentifier: 
   _movementLerpSpeed: 5
-  _lookLerpSpeed: 10
+  _lookLerpSpeed: 1
   _inputBufferSize: 1
   _inputBufferTimeoutMs: 500

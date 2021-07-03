@@ -1,9 +1,7 @@
 using System;
 
 using UnityEngine;
-using UnityEngine.UI;
 
-using pdxpartyparrot.Core.Input;
 using pdxpartyparrot.Core.Time;
 using pdxpartyparrot.Core.UI;
 using pdxpartyparrot.Core.Util;
@@ -12,35 +10,9 @@ using pdxpartyparrot.Game.State;
 
 namespace pdxpartyparrot.ssjjune2021.UI
 {
-    // TODO: could this move down to the Game level?
     [RequireComponent(typeof(UIObject))]
-    public sealed class LevelSelect : MonoBehaviour
+    public sealed class LevelSelect : Game.UI.LevelSelectUI
     {
-        [Serializable]
-        class Level
-        {
-            [SerializeField]
-            public string name;
-
-            [SerializeField]
-            public bool enabled = true;
-
-            [SerializeField]
-            public Image image;
-
-            [SerializeField]
-            public Button button;
-
-            [SerializeField]
-            public Sprite incomplete;
-
-            [SerializeField]
-            public Sprite complete;
-        }
-
-        [SerializeField]
-        private Level[] _levels;
-
         [SerializeField]
         private Dialogue _introDialoguePrefab;
 
@@ -53,26 +25,22 @@ namespace pdxpartyparrot.ssjjune2021.UI
 
         #region Unity Lifecycle
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+
             _introTimer = TimeManager.Instance.AddTimer();
             _introTimer.TimesUpEvent += IntroTimesUpEventHandler;
 
             bool completed = true;
 
-            foreach(Level level in _levels) {
-                // hook up the level button onclicks
+            // setup the initial level state
+            // and button handlers
+            foreach(Level level in Levels) {
                 if(GameManager.Instance.IsLevelCompleted(level.name)) {
-                    level.image.overrideSprite = level.complete;
-                    level.button.interactable = false;
-                } else if(!level.enabled) {
-                    level.image.overrideSprite = level.incomplete;
-
-                    level.button.interactable = false;
-                } else {
+                    level.Complete();
+                } else if(level.enabled) {
                     completed = false;
-
-                    level.image.overrideSprite = level.incomplete;
 
                     level.button.onClick.AddListener(() => {
                         GameStateManager.Instance.StartLocal(GameManager.Instance.GameData.MainGameStatePrefab, state => {
@@ -80,11 +48,7 @@ namespace pdxpartyparrot.ssjjune2021.UI
                         });
                     });
 
-                    if(GameManager.Instance.IntroShown) {
-                        EnableButtonInteract(level.button);
-                    } else {
-                        level.button.interactable = false;
-                    }
+                    EnableButtonInteract(level.button, GameManager.Instance.IntroShown);
                 }
             }
 
@@ -111,22 +75,14 @@ namespace pdxpartyparrot.ssjjune2021.UI
 
         #endregion
 
-        private void EnableButtonInteract(Button button)
-        {
-            button.Select();
-            button.Highlight();
-
-            button.interactable = true;
-        }
-
         #region Event Handlers
 
         private void IntroTimesUpEventHandler(object sender, EventArgs args)
         {
             // enable the buttons that should be enabled
-            foreach(Level level in _levels) {
+            foreach(Level level in Levels) {
                 if(!GameManager.Instance.IsLevelCompleted(level.name) && level.enabled) {
-                    EnableButtonInteract(level.button);
+                    EnableButtonInteract(level.button, true);
                 }
             }
         }

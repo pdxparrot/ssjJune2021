@@ -33,6 +33,8 @@ namespace pdxpartyparrot.Game
 
         CreditsData CreditsData { get; }
 
+        Settings Settings { get; }
+
         bool IsGameReady { get; }
 
         bool IsGameOver { get; }
@@ -92,6 +94,11 @@ namespace pdxpartyparrot.Game
         private CreditsData _creditsData;
 
         public CreditsData CreditsData => _creditsData;
+
+        [SerializeField]
+        private /*readonly*/ Settings _settings = new Settings();
+
+        public Settings Settings => _settings;
 
         [Space(10)]
 
@@ -180,6 +187,8 @@ namespace pdxpartyparrot.Game
             IsGameOver = false;
             IsGameReady = false;
             TransitionToHighScores = false;
+
+            Settings.Reset();
         }
 
         #region Level Helper

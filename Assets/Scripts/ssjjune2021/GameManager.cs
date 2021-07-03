@@ -21,11 +21,6 @@ namespace pdxpartyparrot.ssjjune2021
         public GameViewer Viewer { get; private set; }
 
         [SerializeField]
-        private /*readonly*/ Settings _settings = new Settings();
-
-        public Settings Settings => _settings;
-
-        [SerializeField]
         [ReadOnly]
         private bool _introShown;
 
@@ -53,7 +48,6 @@ namespace pdxpartyparrot.ssjjune2021
         {
             base.Reset();
 
-            _settings.Reset();
             IntroShown = false;
             _completedLevels.Clear();
         }
